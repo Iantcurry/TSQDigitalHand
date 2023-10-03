@@ -1,0 +1,59 @@
+{
+	"Heroes": [
+	{
+			"Name": "Gorlandor",
+			"Levels": [
+			{
+				"Level": 1,
+				"Strength": "2",
+				"Attack_Type": "Physical",
+				"Weapon_Skill": "6",
+				"Gold": "0",
+				"Light": "0",
+				"Exp": "0",
+				"Cost": "7",
+				"Traits": ["Human", "Fighter", "Hero"],
+				"Ability": "May only wield 1 weapon.",
+				"Image": "none"
+			},
+			{
+				"Level": 2,
+				"Strength": "4",
+				"Attack_Type": "Physical",
+				"Weapon_Skill": "8",
+				"Gold": "0",
+				"Light": "0",
+				"Exp": "2",
+				"Cost": "10",
+				"Traits": ["Human", "Fighter", "Hero"],
+				"Ability": "May only wield 1 weapon./nSpoils:/nBuy 1 Weapon/nYou may put it on top of your deck",
+				"Image": "none"				
+			},
+			{
+				"Level": 3,
+				"Strength": "6",
+				"Attack_Type": "Physical",
+				"Weapon_Skill": "10",
+				"Gold": "0",
+				"Light": "0",
+				"Exp": "5",
+				"Cost": "13",
+				"Traits": ["Human", "Fighter", "Hero"],
+				"Ability": "May only wield 1 weapon./nSpoils:/nIf wielding a Weapon, put Gorlandor on top of your deck.",
+				"Image": "none"				
+			},
+			{
+				"Level": 4,
+				"Strength": "10",
+				"Attack_Type": "Physical",
+				"Weapon_Skill": "10",
+				"Gold": "0",
+				"Light": "0",
+				"Exp": "10",
+				"Cost": "7",
+				"Traits": ["Human", "Fighter", "Hero", "Legendary"],
+				"Ability": "Village or Spoils:/nPut Gorlandor on top of your deck.",
+				"Image": "none"				
+			}]
+	}]
+}

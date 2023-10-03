@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TSQDigitalHand.Settings"
+             BackgroundColor="Black">
+    <ContentPage.Content
+        >
+
+        <Grid
+            BackgroundColor="Black"
+            VerticalOptions="FillAndExpand"
+            >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="125"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            
+            <ImageButton x:Name="btn_Accept"
+                    Source="check2.jpg"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BorderColor="White"
+                    BorderWidth="5"
+                    BackgroundColor="Black"
+                    Margin="5,5,5,5"
+                    Clicked="btn_Accept_Clicked"
+            />
+            <ImageButton x:Name="btn_OK"
+                    Source="accept.jpg"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    BorderColor="White"
+                    BorderWidth="5"
+                    BackgroundColor="Black"
+                    Margin="5,5,5,5"
+                    Clicked="btn_OK_Clicked"
+            />
+            <ImageButton x:Name="btn_Cancel"
+                    Source="X.jpg"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    BorderColor="White"
+                    BorderWidth="5"
+                    BackgroundColor="Black"
+                    Margin="5,5,5,5"
+                    Clicked="Btn_Cancel_Clicked"
+            />
+
+            <Label 
+                x:Name="lbl_settings_title"
+                Text="Settings"
+                Grid.Row="1"
+                Grid.Column="0"
+                TextColor="White"
+                BackgroundColor="Black"
+                Grid.ColumnSpan="3"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                FontSize="96"
+                
+                />
+            
+            <ScrollView 
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                >
+                <StackLayout
+                    x:Name="stk_settings"
+                    BackgroundColor="Black"
+
+                
+                    >
+
+                    <Frame BorderColor="White">
+                        <StackLayout>
+                            <Label 
+                                x:Name="lbl_textsize"
+                                Text="{Binding Source={x:Reference sld_textsize},
+                                               Path=Value,
+                                               StringFormat='Text Size: {0:F0}'
+                                       }"
+                                FontSize="{Binding Source={x:Reference sld_textsize},
+                                                   Path=Value                            
+                                           }"
+                                TextColor="White"
+                                BackgroundColor="Black"
+                            
+                                />
+                            <Slider 
+                                x:Name="sld_textsize"
+                                Maximum="300"
+                                Value="50"
+                                Minimum="1"
+                                BackgroundColor="Black"
+                                ThumbColor="White"
+                                MaximumTrackColor="white"
+                                MinimumTrackColor="White"
+                                ValueChanged="Sld_textsize_ValueChanged"
+                                HeightRequest="150"
+                                />
+                        </StackLayout>
+                    </Frame>
+
+                    <Label 
+                        x:Name="lbl_textTest"
+                        Text="This is a test"
+                        BackgroundColor="Black"
+                        TextColor="White"
+                        FontSize="{Binding Source={x:Reference sld_textsize},
+                                            Path=Value                            
+                                    }"
+                        />
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+
+
+    </ContentPage.Content>
+</ContentPage>

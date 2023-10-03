@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TSQDigitalHand.CardViewer">
+    <ContentPage.Content>
+        <Grid BackgroundColor="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0"
+                BackgroundColor="Black">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <ImageButton x:Name="btn_Magnifier"
+                             Grid.Column="0"
+                             Source="Magnifier.png"
+                             BorderColor="White"
+                             BorderWidth="5"
+                             BackgroundColor="Black"
+                             Margin="5,5,5,5"
+                             />
+                <ImageButton x:Name="btn_Mode"
+                             Grid.Column="1"
+                             Source="Text.png"
+                             BorderColor="White"
+                             BorderWidth="5"
+                             BackgroundColor="Black"
+                             Margin="5,5,5,5"
+                             />
+                <ImageButton x:Name="btn_Speech"
+                             Grid.Column="2"
+                             Source="Speech.png"
+                             BorderColor="White"
+                             BorderWidth="5"
+                             BackgroundColor="Black"
+                             Margin="5,5,5,5"
+                             />
+                <ImageButton x:Name="btn_Close"
+                             Grid.Column="3"
+                             Source="X.png"
+                             BorderColor="White"
+                             BorderWidth="5"
+                             BackgroundColor="Black"
+                             Margin="5,5,5,5"
+                             />
+
+            </Grid>
+            <AbsoluteLayout 
+                Grid.Row="1">
+                <Image
+                    x:Name="img_Card"
+                    BackgroundColor="Black"
+                    AbsoluteLayout.LayoutFlags="SizeProportional"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    Aspect="AspectFit"
+                    Source="NoPic.png"
+                    />
+                <ImageButton x:Name="btn_Up"
+                             BackgroundColor="Transparent"
+                             AbsoluteLayout.LayoutFlags="PositionProportional"
+                             AbsoluteLayout.LayoutBounds=".5,-.15, 100, 300"
+                             Source="Trans_Chevron.png"
+                             Rotation="270"
+                             Aspect="Fill"
+                              />
+                <ImageButton x:Name="btn_Down"
+                             BackgroundColor="Transparent"
+                             AbsoluteLayout.LayoutFlags="PositionProportional"
+                             AbsoluteLayout.LayoutBounds=".5,1.13, 100, 300"
+                             Source="Trans_Chevron.png"
+                             Rotation="90"
+                             Aspect="Fill"
+                           />
+                <ImageButton x:Name="btn_Left"
+                             BackgroundColor="Transparent"
+                             AbsoluteLayout.LayoutFlags="PositionProportional"
+                             AbsoluteLayout.LayoutBounds="0,.5, 100, 300"
+                             Source="Trans_Chevron.png"
+                             Rotation="180"
+                             Aspect="Fill"
+
+                              />
+                <ImageButton x:Name="btn_Right"
+                             BackgroundColor="Transparent"
+                             AbsoluteLayout.LayoutFlags="PositionProportional"
+                             AbsoluteLayout.LayoutBounds="1,.5, 100, 300"
+                             Source="Trans_Chevron.png"
+                             Rotation="0"
+                             Aspect="Fill"
+                             />
+
+            </AbsoluteLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TSQDigitalHand"
+             x:Class="TSQDigitalHand.CardViewerListPage"
+             xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
+             >
+
+    <ContentPage.Content>
+
+            <Grid
+            x:Name="gr_cv_Main"
+            BackgroundColor="Black"
+            >
+                <Grid.RowDefinitions>
+                    <RowDefinition 
+                    x:Name="row0"
+                    Height="200"/>
+                    <RowDefinition 
+                    x:Name="row1"
+                    Height="{Binding Height}"/>
+                    <RowDefinition 
+                    x:Name="row2"
+                    Height="{Binding Height}"/>
+                    <RowDefinition 
+                    x:Name="row3"
+                    Height="{Binding Height}"/>
+                    <RowDefinition 
+                    x:Name="row4"
+                    Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ImageButton x:Name="btn_OK"
+                    Source="check2.jpg"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BorderColor="White"
+                    BorderWidth="5"
+                    BackgroundColor="Black"
+                    Margin="5,5,5,5"
+                    Command="{Binding OnOkClickedCommand}"
+                />
+                    <ImageButton x:Name="btn_Cancel"
+                    Source="X.jpg"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    BorderColor="White"
+                    BorderWidth="5"
+                    BackgroundColor="Black"
+                    Margin="5,5,5,5"
+                    Command="{Binding CloseWindowCommand}"
+                />
+
+                </Grid>
+
+                <Label 
+                x:Name="lbl_cv_title"
+                Grid.Row="1"
+                Text="Card Viewer"
+                TextColor="White"
+                BackgroundColor="Black"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                FontSize="{Binding TextSize}"
+                />
+            <local:CustomPicker 
+                x:Name="pck_CardType"
+                Grid.Row="2"
+                Title="Select an Option"
+                TextColor="White"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                FontSize="{Binding TextSize}"
+                SelectedItem="{Binding ItemType, Mode=TwoWay}"
+                >
+            </local:CustomPicker>
+
+                <Frame
+                Grid.Row="3"
+                BackgroundColor="White"
+                Padding="0"
+                >
+                    <Grid
+                    Margin="2"
+                    >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Entry
+                        x:Name="ent_Search"
+                        BackgroundColor="Black"
+                        Placeholder="Search...."
+                        PlaceholderColor="White"
+                        TextColor="White"
+                        Grid.Column="0"
+                        FontSize="{Binding TextSize}"
+                        />
+
+                    </Grid>
+                </Frame>
+
+                <ScrollView
+                Grid.Row="4"
+                BackgroundColor="Black">
+
+                    <ListView x:Name="lv_CardNameList"
+                              ItemsSource="{Binding CardNames}"
+                              RowHeight="{Binding Height}"
+                              SelectedItem="{Binding lvSelectedItem, Mode=TwoWay}"
+                              >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell Tapped="ViewCell_Tapped">
+                                    <Label
+                                        BackgroundColor="Black"
+                                        TextColor="White"
+                                        FontSize="{Binding BindingContext.TextSize, Source={x:Reference lv_CardNameList}}"
+                                        Text="{Binding}"
+                                        />
+
+                                </ViewCell>
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+
+                    </ListView>
+
+                </ScrollView>
+            </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

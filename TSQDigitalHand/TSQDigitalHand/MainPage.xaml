@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TSQDigitalHand.MainPage">
+
+    <Grid BackgroundColor="Black" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>                    
+        
+        <Label x:Name="lb_title"
+               Text="Thunderstone Quest" 
+               HorizontalTextAlignment="Center" 
+               TextColor="White" 
+               FontSize="120"
+               Grid.Row="0"
+               VerticalOptions="CenterAndExpand"
+               />
+        <Label x:Name="lb_subtitle"
+               Text="Digital Hand And Dungeon" 
+               TextColor="White" 
+               HorizontalTextAlignment="Center" 
+               FontSize="88" 
+               Grid.Row="1"
+               VerticalOptions="Center"
+               />
+        <Button 
+            x:Name='btn_newgame'
+            Grid.Row="2"
+            Text="New Game"
+            BackgroundColor="Black"
+            TextColor="White"
+            BorderColor="White"
+            BorderWidth="5"
+            VerticalOptions="FillAndExpand"
+            Margin="5,5,5,5"
+            FontSize="96"
+            />
+        <Button 
+            x:Name='btn_cardview'
+            Grid.Row="3"
+            Text="Card Viewer"
+            BackgroundColor="Black"
+            TextColor="White"
+            BorderColor="White"
+            BorderWidth="5"
+            VerticalOptions="FillAndExpand"
+            Margin="5,5,5,5"
+            FontSize="96"
+            Clicked="OnCardViewCliked"
+            />
+        <Button 
+            x:Name='btn_settings'
+            Grid.Row="4"
+            Text="Settings"
+            BackgroundColor="Black"
+            TextColor="White"
+            BorderColor="White"
+            BorderWidth="5"
+            VerticalOptions="FillAndExpand"
+            Margin="5,5,5,5"
+            FontSize="96"
+            Clicked="OnSettingsClicked"
+            />
+    </Grid>
+
+</ContentPage>
