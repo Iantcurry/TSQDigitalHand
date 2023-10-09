@@ -154,9 +154,18 @@ namespace TSQDigitalHand
         {
             if (lvSelectedItem != "")
             {
-                Navigation.PushModalAsync(new CardViewer(_settings, Cards, new List<string>(CardNames), lvSelectedItem));
+                int cardlevel = -1;
+                Card card = Cards[0].GetCard(lvSelectedItem);
+                if (card != null)
+                {
+                    if (card.Type.Equals("Hero")) cardlevel = 1;
+                    if (card.Type.Equals("Guardians")) cardlevel = 4;
+                }
+                Navigation.PushModalAsync(new CardViewer(_settings, Cards, new List<string>(CardNames), lvSelectedItem, cardlevel));
             }
         }
+
+
 
     }
 

@@ -12,11 +12,11 @@ namespace TSQDigitalHand
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CardViewer : ContentPage
     {
-        public CardViewer(SettingsClass settings, List<Quest> Cards, List<string> cardList, string selectedCard)
+        public CardViewer(SettingsClass settings, List<Quest> Cards, List<string> cardList, string selectedCard, int cardLevel)
         {
             InitializeComponent();
 
-            BindingContext = new CardViewerViewModel(settings, Cards, cardList, selectedCard);
+            BindingContext = new CardViewerViewModel(settings, Cards, cardList, selectedCard, cardLevel);
         }
     }
 }

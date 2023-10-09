@@ -56,7 +56,8 @@ namespace TSQDigitalHand.UWP
                 rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
-                Xamarin.Forms.Forms.Init(e);
+                Xamarin.Forms.Forms.Init(e, Forms9Patch.UWP.Settings.AssembliesToInclude);
+                Forms9Patch.UWP.Settings.Initialize(this);
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

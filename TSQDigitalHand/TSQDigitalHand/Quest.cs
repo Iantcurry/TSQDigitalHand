@@ -24,6 +24,122 @@ namespace TSQDigitalHand
             Monsters = new List<Monster>();
             Guardians = new List<Guardian>();
         }
+
+        public Card GetCard(string cardname)
+        {
+            Card card;
+
+            foreach (Hero hero in Heroes)
+            {
+                if (hero.Name.Equals(cardname))
+                {
+                    card = hero;
+                    return hero;
+                }
+            }
+
+            foreach (Spell spell in Spells)
+            {
+                if (spell.Name.Equals(cardname))
+                {
+                    card = spell;
+                    return spell;
+                }
+            }
+
+            foreach (Weapon weapon in Weapons)
+            {
+                if (weapon.Name.Equals(cardname))
+                { 
+                    card = weapon;
+                    return weapon;
+                }
+            }
+
+            foreach (Item item in Items)
+            {
+                if (item.Name.Equals(cardname))
+                {
+                    card = item;
+                    return item;
+                }
+            }
+
+            foreach (Monster monster in Monsters)
+            {
+                if (monster.Name.Equals(cardname))
+                {
+                    card = monster;
+                    return monster;
+                }
+            }
+
+            foreach (Guardian guardian in Guardians)
+            {
+                if (guardian.Name.Equals(cardname))
+                {
+                    card = guardian;
+                    return guardian;
+
+                }
+            }
+
+            return null;
+        }
+
+        public Hero GetHero(Card card)
+        {
+            foreach (Hero hero in Heroes)
+            {
+                if (card.Name.Equals(hero.Name)) return hero;
+            }
+            return null;
+        }
+
+        public Spell GetSpell(Card card)
+        {
+            foreach (Spell spell in Spells)
+            {
+                if (spell.Name.Equals(card.Name)) return spell;
+            }
+            return null;
+        }
+
+        public Item GetItem(Card card)
+        {
+            foreach(Item item in Items)
+            {
+                if (item.Name.Equals(card.Name)) return item;
+            }
+            return null;
+        }
+
+        public Weapon GetWeapon(Card card)
+        {
+            foreach(Weapon weapon in Weapons)
+            {
+                if (weapon.Name.Equals(card.Name)) return weapon;
+            }
+            return null;
+        }
+
+        public Monster GetMonster(Card card)
+        {
+            foreach(Monster monster in Monsters)
+            {
+                if (monster.Name.Equals(card.Name)) return monster;
+            }
+            return null;
+        }
+
+        public Guardian GetGuardian(Card card)
+        {
+            foreach(Guardian guardian in Guardians)
+            {
+                if (guardian.Name.Equals(card.Name)) return guardian;
+            }
+            return null;
+        }
     }
     
     public interface Card
@@ -42,6 +158,17 @@ namespace TSQDigitalHand
         {
             Levels = new List<Levels>();
             Type = "Hero";
+        }
+
+        public Levels GetLevel(int level)
+        {
+            //System.Diagnostics.Debug.WriteLine(level.ToString());
+            foreach (Levels l in Levels)
+            {
+                if (l.Level == level) return l;
+            }
+
+            return null;
         }
     }
 
@@ -155,6 +282,21 @@ namespace TSQDigitalHand
             Levels = new List<GLevel>();
             Type = "Guardian";
         }
+
+        public GLevel GetGLevel(int level)
+        {
+            foreach (GLevel l in Levels)
+            {
+                if (l.Level.Equals(level.ToString()))
+                {
+                    return l;
+                }
+            }
+
+
+            return null;
+        }
+
     }
 
     public class GLevel

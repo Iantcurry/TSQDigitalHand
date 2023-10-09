@@ -1,36 +1,67 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Forms9Patch="clr-namespace:Forms9Patch;assembly=Forms9Patch"
              x:Class="TSQDigitalHand.MainPage">
+    <ScrollView
+        VerticalScrollBarVisibility="Always"
+        >
+        <Grid x:Name="gr_MainMenu"
+          BackgroundColor="Black" 
+          
+          >
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="rw_row1" Height="Auto"/>
+                <RowDefinition x:Name="rw_row2" Height="Auto"/>
+                <RowDefinition x:Name="rw_row3" Height="Auto"/>
+                <RowDefinition x:Name="rw_row4" Height="Auto"/>
+                <RowDefinition x:Name="rw_row5" Height="*"/>
+                <RowDefinition x:Name="rw_row6" Height="*"/>
+                <RowDefinition x:Name="rw_row7" Height="*"/>
+            </Grid.RowDefinitions>
 
-    <Grid BackgroundColor="Black" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="300"/>
-            <RowDefinition Height="250"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>                    
-        
-        <Label x:Name="lb_title"
-               Text="Thunderstone Quest" 
+            <Forms9Patch:Label x:Name="lb_title"
+               Text="Thunderstone" 
                HorizontalTextAlignment="Center" 
                TextColor="White" 
-               FontSize="120"
                Grid.Row="0"
                VerticalOptions="CenterAndExpand"
+               Lines="1"
+               AutoFit="Width"
+               BackgroundColor="Black"
                />
-        <Label x:Name="lb_subtitle"
-               Text="Digital Hand And Dungeon" 
+            <Forms9Patch:Label x:Name="lb_title2"
+               Text="Quest"
+               HorizontalTextAlignment="Center" 
+               TextColor="White" 
+               Grid.Row="1"
+               VerticalOptions="CenterAndExpand"
+               Lines="1"
+               AutoFit="Width"
+               BackgroundColor="Black"
+               >
+            </Forms9Patch:Label>
+            <Forms9Patch:Label x:Name="lb_subtitle"
+               Text="Digital Hand"
                TextColor="White" 
                HorizontalTextAlignment="Center" 
-               FontSize="88" 
-               Grid.Row="1"
+               Grid.Row="2"
                VerticalOptions="Center"
+               Lines="1"
+               AutoFit="Width"
                />
-        <Button 
+            <Forms9Patch:Label x:Name="lb_subtitle2"
+               Text="And Dungeon" 
+               TextColor="White" 
+               HorizontalTextAlignment="Center" 
+               Grid.Row="3"
+               VerticalOptions="Center"
+               Lines="1"
+               AutoFit="Width"
+               />
+            <Button 
             x:Name='btn_newgame'
-            Grid.Row="2"
+            Grid.Row="4"
             Text="New Game"
             BackgroundColor="Black"
             TextColor="White"
@@ -40,9 +71,9 @@
             Margin="5,5,5,5"
             FontSize="96"
             />
-        <Button 
+            <Button 
             x:Name='btn_cardview'
-            Grid.Row="3"
+            Grid.Row="5"
             Text="Card Viewer"
             BackgroundColor="Black"
             TextColor="White"
@@ -53,9 +84,9 @@
             FontSize="96"
             Clicked="OnCardViewCliked"
             />
-        <Button 
+            <Button 
             x:Name='btn_settings'
-            Grid.Row="4"
+            Grid.Row="6"
             Text="Settings"
             BackgroundColor="Black"
             TextColor="White"
@@ -66,6 +97,6 @@
             FontSize="96"
             Clicked="OnSettingsClicked"
             />
-    </Grid>
-
+        </Grid>
+    </ScrollView>
 </ContentPage>

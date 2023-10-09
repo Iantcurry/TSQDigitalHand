@@ -34,6 +34,7 @@
                              BorderWidth="5"
                              BackgroundColor="Black"
                              Margin="5,5,5,5"
+                             Command="{Binding SwitchModeCommand}"
                              />
                 <ImageButton x:Name="btn_Speech"
                              Grid.Column="2"
@@ -50,18 +51,81 @@
                              BorderWidth="5"
                              BackgroundColor="Black"
                              Margin="5,5,5,5"
+                             Command="{Binding CloseWindowCommand}"
                              />
 
             </Grid>
             <AbsoluteLayout 
                 Grid.Row="1">
+                <ScrollView
+                    x:Name="sv_CardDetails"
+                    BackgroundColor="Black"
+                    AbsoluteLayout.LayoutFlags="All"
+                    AbsoluteLayout.LayoutBounds="0.35,0.35,0.85,0.85"
+                     
+                    >
+                    <StackLayout>
+                        <Label x:Name="lbl_Name"
+                               FontSize="{Binding TextSize}"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="{Binding CardName}"
+                               HorizontalTextAlignment="Center"
+                               />
+                        <Label x:Name="lbl_StrSkill"
+                               FontSize="{Binding TextSize}"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="{Binding CardStrSkill}"
+                               HorizontalTextAlignment="Center"
+                               />
+                        <Label x:Name="lbl_GoldLight"
+                               FontSize="{Binding TextSize}"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="{Binding CardGoldLight}"
+                               HorizontalTextAlignment="Center"
+                               />
+                        <Label x:Name="lbl_LevelExp"
+                               FontSize="{Binding TextSize}"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="{Binding CardLevelExp}"
+                               HorizontalTextAlignment="Center"
+                               />
+                        <Label x:Name="lbl_Cost"
+                               FontSize="{Binding TextSize}"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="{Binding CardCost}"
+                               HorizontalTextAlignment="Center"
+                               />
+                        <Label x:Name="lbl_Traits"
+                               FontSize="{Binding TextSize}"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="{Binding CardTraits}"
+                               HorizontalTextAlignment="Center"
+                               />
+                        <Label x:Name="lbl_Ability"
+                               FontSize="{Binding TextSize}"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="{Binding CardAbility}"
+                               HorizontalTextAlignment="Center"
+                               />
+
+
+                    </StackLayout>
+                </ScrollView>
                 <Image
                     x:Name="img_Card"
                     BackgroundColor="Black"
                     AbsoluteLayout.LayoutFlags="SizeProportional"
                     AbsoluteLayout.LayoutBounds="0,0,1,1"
                     Aspect="AspectFit"
-                    Source="NoPic.png"
+                    Source="{Binding Imagepath}"
+                    IsVisible="{Binding ImageMode}"
                     />
                 <ImageButton x:Name="btn_Up"
                              BackgroundColor="Transparent"
@@ -70,6 +134,7 @@
                              Source="Trans_Chevron.png"
                              Rotation="270"
                              Aspect="Fill"
+                             Command="{Binding UpLevelCommand}"
                               />
                 <ImageButton x:Name="btn_Down"
                              BackgroundColor="Transparent"
@@ -78,6 +143,7 @@
                              Source="Trans_Chevron.png"
                              Rotation="90"
                              Aspect="Fill"
+                             Command="{Binding DownLevelCommand}"
                            />
                 <ImageButton x:Name="btn_Left"
                              BackgroundColor="Transparent"
@@ -86,7 +152,7 @@
                              Source="Trans_Chevron.png"
                              Rotation="180"
                              Aspect="Fill"
-
+                             Command="{Binding PrevCardCommand}"
                               />
                 <ImageButton x:Name="btn_Right"
                              BackgroundColor="Transparent"
@@ -95,6 +161,7 @@
                              Source="Trans_Chevron.png"
                              Rotation="0"
                              Aspect="Fill"
+                             Command="{Binding NextCardCommand}"
                              />
 
             </AbsoluteLayout>

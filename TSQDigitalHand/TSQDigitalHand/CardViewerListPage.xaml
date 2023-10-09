@@ -119,9 +119,11 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell Tapped="ViewCell_Tapped">
+                                    
                                     <Label
                                         BackgroundColor="Black"
                                         TextColor="White"
+                                        LineBreakMode="MiddleTruncation"
                                         FontSize="{Binding BindingContext.TextSize, Source={x:Reference lv_CardNameList}}"
                                         Text="{Binding}"
                                         />
