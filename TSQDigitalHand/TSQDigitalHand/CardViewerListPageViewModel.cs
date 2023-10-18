@@ -7,6 +7,8 @@ using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using Xamarin.Essentials;
 using System.Windows.Input;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace TSQDigitalHand
 {
@@ -69,6 +71,7 @@ namespace TSQDigitalHand
                 }
                  }
         }
+
 
         public CardViewerListPageViewModel()
         {
@@ -161,10 +164,9 @@ namespace TSQDigitalHand
                     if (card.Type.Equals("Hero")) cardlevel = 1;
                     if (card.Type.Equals("Guardians")) cardlevel = 4;
                 }
-                Navigation.PushModalAsync(new CardViewer(_settings, Cards, new List<string>(CardNames), lvSelectedItem, cardlevel));
+                Navigation.PushModalAsync(new CardViewer(_settings, Cards, new List<string>(CardNames), lvSelectedItem, cardlevel, Navigation));
             }
         }
-
 
 
     }

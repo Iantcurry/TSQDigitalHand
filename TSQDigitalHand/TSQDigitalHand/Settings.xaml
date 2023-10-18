@@ -110,13 +110,23 @@
                     </Frame>
 
                     <Label 
-                        x:Name="lbl_textTest"
-                        Text="This is a test"
+                        x:Name="lbl_ImageFolder"
+                        Text="Image Folder Path"
                         BackgroundColor="Black"
                         TextColor="White"
                         FontSize="{Binding Source={x:Reference sld_textsize},
                                             Path=Value                            
                                     }"
+                        />
+                    <Entry
+                        x:Name="ent_ImageFolder"
+                        Text="{Binding ImageFolderPath}"
+                        FontSize="{Binding Source={x:Reference sld_textsize},
+                                            Path=Value                            
+                                    }"
+                        TextColor="White"
+                        BackgroundColor="Black"
+                        TextChanged="ent_ImageFolder_TextChanged"
                         />
 
                 </StackLayout>

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffil="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="TSQDigitalHand.CardViewer">
     <ContentPage.Content>
         <Grid BackgroundColor="Black">
@@ -26,6 +27,7 @@
                              BorderWidth="5"
                              BackgroundColor="Black"
                              Margin="5,5,5,5"
+                             Command="{Binding OnMagnifierClickedCommand}"
                              />
                 <ImageButton x:Name="btn_Mode"
                              Grid.Column="1"
@@ -43,6 +45,7 @@
                              BorderWidth="5"
                              BackgroundColor="Black"
                              Margin="5,5,5,5"
+                             Command="{Binding OnClickSpeechCommand}"
                              />
                 <ImageButton x:Name="btn_Close"
                              Grid.Column="3"
@@ -118,16 +121,20 @@
 
                     </StackLayout>
                 </ScrollView>
-                <Image
+                <ffil:CachedImage
                     x:Name="img_Card"
                     BackgroundColor="Black"
                     AbsoluteLayout.LayoutFlags="SizeProportional"
                     AbsoluteLayout.LayoutBounds="0,0,1,1"
                     Aspect="AspectFit"
-                    Source="{Binding Imagepath}"
                     IsVisible="{Binding ImageMode}"
-                    />
-                <ImageButton x:Name="btn_Up"
+                    Source="{Binding CardImageSource}"
+                    >
+                    <!--<ffil:CachedImage.Source>
+                        <FileImageSource File="{Binding ImagePath}"/>
+                    </ffil:CachedImage.Source-->
+                    </ffil:CachedImage>
+                    <ImageButton x:Name="btn_Up"
                              BackgroundColor="Transparent"
                              AbsoluteLayout.LayoutFlags="PositionProportional"
                              AbsoluteLayout.LayoutBounds=".5,-.15, 100, 300"

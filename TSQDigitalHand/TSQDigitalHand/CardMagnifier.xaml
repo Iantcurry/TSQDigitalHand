@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TSQDigitalHand"
+             xmlns:pinch="clr-namespace:Xamarin.Forms.PinchZoomImage;assembly=Xamarin.Forms.PinchZoomImage"
+             x:Class="TSQDigitalHand.CardMagnifier">
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="Black">
+            <Grid BackgroundColor="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid
+                Grid.Row="0"
+                BackgroundColor="Black">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ImageButton x:Name="btn_Bigger"
+                             Grid.Column="0"
+                             Source="Magnifier.png"
+                             BorderColor="White"
+                             BorderWidth="5"
+                             BackgroundColor="Black"
+                             Margin="5,5,5,5"
+                             Clicked="btn_Bigger_Clicked"
+                             />
+                    <ImageButton x:Name="btn_Smaller"
+                             Grid.Column="1"
+                             Source="Magnifier.png"
+                             BorderColor="White"
+                             BorderWidth="5"
+                             BackgroundColor="Black"
+                             Margin="5,5,5,5"
+                             Clicked="btn_Smaller_Clicked"
+                             />
+                    <ImageButton x:Name="btn_Close"
+                             Grid.Column="2"
+                             Source="X.png"
+                             BorderColor="White"
+                             BorderWidth="5"
+                             BackgroundColor="Black"
+                             Margin="5,5,5,5"
+                             Clicked="btn_Close_Clicked"
+                             />
+
+                </Grid>
+                <AbsoluteLayout
+                    x:Name="al_CardImageLayout"
+                    Grid.Row="1"
+                    >
+                    <pinch:PinchZoom
+                        x:Name="pz_ImageContainer"
+                        AbsoluteLayout.LayoutFlags="SizeProportional"
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        IsClippedToBounds="True"
+                        >
+                        <pinch:PinchZoom.Content>
+                            <Image x:Name="img_CardImage" />
+                        </pinch:PinchZoom.Content>
+                    </pinch:PinchZoom>
+                </AbsoluteLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -7,6 +7,8 @@ using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using Xamarin.Essentials;
 using System.Windows.Input;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace TSQDigitalHand
 {
@@ -35,7 +37,7 @@ namespace TSQDigitalHand
             set { _cards = value; OnPropertyChanged(); }
         }
         public string _imagepath;
-        public string Imagepath
+        public string ImagePath
         {
             get { return _imagepath; }
             set { _imagepath = value; OnPropertyChanged(); }
@@ -115,17 +117,50 @@ namespace TSQDigitalHand
             set { _imgMode = value; OnPropertyChanged(); }
         }
 
+        public bool _speechflag;
+        public bool SpeechFlag
+        {
+            get { return _speechflag; }
+            set { _speechflag = value; OnPropertyChanged(); }
+        }
 
-        public CardViewerViewModel(SettingsClass settings, List<Quest> cards, List<string> cardList, string selectedCard, int cardlevel)
+        public string _ttsstring;
+        public string TTSString
+        {
+            get { return _ttsstring; }
+            set { _ttsstring = value; OnPropertyChanged(); }
+        }
+
+        public string _imageFolderPath;
+        public string ImageFolderPath
+        {
+            get { return _imageFolderPath; }
+            set { _imageFolderPath = value; OnPropertyChanged(); }
+        }
+
+        public ImageSource _cardimagesource;
+        public ImageSource CardImageSource
+        {
+            get { return _cardimagesource; }
+            set { _cardimagesource = value; OnPropertyChanged(); }
+        }
+
+        public INavigation Navigation;
+
+        public CardViewerViewModel(SettingsClass settings, List<Quest> cards, List<string> cardList, string selectedCard, int cardlevel, INavigation navigation)
         {
             CardList = new List<string>(cardList);
             Cards = cards;
             TextSize = settings.FontSize;
-            Imagepath = "NoPic.png";
+            ImagePath = "NoPic.png";
             StartCard = selectedCard;
             CardLevel = cardlevel;
+            ImageFolderPath = settings.ImageFolderPath;
             CurrCard = Cards[0].GetCard(selectedCard);
             ImageMode = true;
+            SpeechFlag = false;
+            Navigation = navigation;
+
         }
 
         public void SetCurrentCard(Card card, string Type)
@@ -150,7 +185,13 @@ namespace TSQDigitalHand
                     }
                     CardTraits = temp;
                     CardAbility = currLevel.Ability;
-                    Imagepath = currLevel.Image;
+                    ImagePath = ImageFolderPath + currLevel.Image;
+
+                    TTSString = CardName + ", Strength = " + currLevel.Strength +
+                        currLevel.Attack_Type + ", Weapon Skill = " + currLevel.Weapon_Skill +
+                        ", Gold = " + currLevel.Gold + ", Light = " + currLevel.Light +
+                        ", Level = " + currLevel.Level.ToString() + ", Experience = " + currLevel.Exp +
+                        ", Cost = " + currLevel.Cost + ", Traits are " + CardTraits + ", Ability = " + CardAbility;
 
                     break;
                 case "Spell":
@@ -169,8 +210,14 @@ namespace TSQDigitalHand
                     CardTraits = temp;
                     CardAbility = spell.Ability;
 
+                    TTSString = CardName + ", Strength = " + spell.Strength +
+                        spell.Attack_Type + ", Weapon Skill = " + spell.Weapon_Skill +
+                        ", Gold = " + spell.Gold + ", Light = " + spell.Light +
+                        ", Experience = " + spell.Exp +
+                        ", Cost = " + spell.Cost + ", Traits are " + CardTraits + ", Ability = " + CardAbility;
 
-                    Imagepath = spell.Image;
+
+                    ImagePath = ImageFolderPath + spell.Image;
                     break;
                 case "Weapon":
                     Weapon weapon = Cards[0].GetWeapon(card);
@@ -188,7 +235,14 @@ namespace TSQDigitalHand
                     CardTraits = temp;
                     CardAbility = weapon.Ability;
 
-                    Imagepath = weapon.Image;
+                    ImagePath = ImageFolderPath + weapon.Image;
+
+                    TTSString = CardName + ", Strength = " + weapon.Strength +
+                        weapon.Attack_Type + ", Weapon Skill = " + weapon.Weapon_Skill +
+                        ", Gold = " + weapon.Gold + ", Light = " + weapon.Light +
+                        ", Experience = " + weapon.Exp +
+                        ", Cost = " + weapon.Cost + ", Traits are " + CardTraits + ", Ability = " + CardAbility;
+
                     break;
                 case "Item":
                     Item item = Cards[0].GetItem(card);
@@ -206,7 +260,16 @@ namespace TSQDigitalHand
                     CardTraits = temp;
                     CardAbility = item.Ability;
 
-                    Imagepath = item.Image;
+                    //Imagepath = item.Image;
+
+                    ImagePath = ImageFolderPath + item.Image;
+
+                    TTSString = CardName + ", Strength = " + item.Strength +
+                        item.Attack_Type + ", Weapon Skill = " + item.Weapon_Skill +
+                        ", Gold = " + item.Gold + ", Light = " + item.Light +
+                        ", Experience = " + item.Exp +
+                        ", Cost = " + item.Cost + ", Traits are " + CardTraits + ", Ability = " + CardAbility;
+
                     break;
                 case "Monster":
                     Monster monster = Cards[0].GetMonster(card);
@@ -224,7 +287,13 @@ namespace TSQDigitalHand
                     CardTraits = temp;
                     CardAbility = monster.Ability;
 
-                    Imagepath = monster.Image;
+                    TTSString = CardName + ".... Hit Points = " + monster.HP + ", Armour = " +
+                            monster.Armour + monster.Armour_Type +
+                            ", Wounds = " + monster.Wounds + monster.Wound_Type + ", Level = " + monster.Level +
+                            ", Experience = " + monster.Exp +
+                            ", Reward = " + monster.Reward + ", Traits are " + CardTraits + ", Ability = " + CardAbility;
+
+                    ImagePath = ImageFolderPath + monster.Image;
                     break;
                 case "Guardian":
                     Guardian guardian = Cards[0].GetGuardian(card);
@@ -244,12 +313,21 @@ namespace TSQDigitalHand
                     CardTraits = temp;
                     CardAbility = level.Ability;
 
-                    Imagepath = level.Image;
+                    ImagePath = ImageFolderPath + level.Image;
+                    TTSString = CardName + ", Hit Points = " + level.HP + ", Armour = " +
+                           level.Armour + level.Armour_Type +
+                           ", Wounds = " + level.Wounds + level.Wound_Type + ", Level = " + level.Level +
+                           ", Experience = " + level.Exp +
+                           ", Reward = " + level.Reward + ", Traits are " + CardTraits + ", Ability = " + CardAbility;
+
+
                     break;
             }
 
-
+            CardImageSource = ImageSource.FromFile(ImagePath);
             
+            //System.Diagnostics.Debug.WriteLine(ImagePath);
+            //CardName = ImagePath;
         }
 
         public ICommand PrevCardCommand => new Command(PrevCard);
@@ -315,6 +393,12 @@ namespace TSQDigitalHand
             }
         }
 
+        public ICommand OnMagnifierClickedCommand => new Command(OnMagnifierClicked);
+        public void OnMagnifierClicked()
+        {
+            Navigation.PushModalAsync(new CardMagnifier(ImagePath));
+        }
+
         public ICommand SwitchModeCommand => new Command(SwitchMode);
         public void SwitchMode()
         {
@@ -326,6 +410,47 @@ namespace TSQDigitalHand
         async void CloseWindow()
         {
             await Application.Current.MainPage.Navigation.PopModalAsync();
+        }
+
+        CancellationTokenSource cts;
+
+        public ICommand OnClickSpeechCommand => new Command(OnClickSpeech);
+
+        public async void OnClickSpeech()
+        {
+            if (SpeechFlag == false)
+            {
+                // Start Talking
+                SpeechFlag = true;
+
+                while (SpeechFlag == false)
+                {
+                    await Task.Delay(1);
+                }
+
+                cts = new CancellationTokenSource();
+                await TextToSpeech.SpeakAsync(TTSString, cancelToken: cts.Token).ContinueWith((t) =>
+                {
+                    SpeechFlag = false;
+                    while (SpeechFlag == true)
+                    {
+                    }
+
+                }, TaskScheduler.FromCurrentSynchronizationContext());
+            }
+            else
+            {
+                // Cancel Speech
+
+                cts.Cancel();
+
+                SpeechFlag = false;
+
+                while (SpeechFlag == true)
+                {
+                    await Task.Delay(1);
+                }
+            }
         }
 
     }

@@ -13,6 +13,8 @@ using Xamarin.Forms.PlatformConfiguration;
 using System.Drawing;
 using Forms9Patch;
 
+
+
 namespace TSQDigitalHand
 {
 
@@ -37,9 +39,14 @@ namespace TSQDigitalHand
             LoadSettings();
             SetMenuSizes();
 
-            ImageFolderPath = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            //ImageFolderPath = DependencyService.Get<IGetImagePath>().Start();
 
-            System.Diagnostics.Debug.WriteLine(ImageFolderPath);
+            //System.Diagnostics.Debug.WriteLine(ImageFolderPath);
+        }
+
+        public interface IGetImagePath
+        {
+            string Start();
         }
 
         public void LoadJSONData()
@@ -85,6 +92,7 @@ namespace TSQDigitalHand
         public void LoadSettings()
         {
             settings.FontSize = Preferences.Get("FontSize", 50.0);
+            settings.ImageFolderPath = Preferences.Get("ImageFolderPath", DependencyService.Get<IGetImagePath>().Start());
         }
 
         private void OnCardViewCliked(object sender, EventArgs e)
@@ -114,9 +122,9 @@ namespace TSQDigitalHand
             else lb_title2.FontSize = lb_title.FontSize;
 
 
-            System.Diagnostics.Debug.WriteLine(lb_title.FittedFontSize.ToString());
-            System.Diagnostics.Debug.WriteLine(lb_title2.FontSize.ToString());
-            System.Diagnostics.Debug.WriteLine(rw_row4.Height.ToString());
+            //System.Diagnostics.Debug.WriteLine(lb_title.FittedFontSize.ToString());
+            //System.Diagnostics.Debug.WriteLine(lb_title2.FontSize.ToString());
+            //System.Diagnostics.Debug.WriteLine(rw_row4.Height.ToString());
 
             //var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
 
