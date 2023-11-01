@@ -145,6 +145,19 @@ namespace TSQDigitalHand
             set { _cardimagesource = value; OnPropertyChanged(); }
         }
 
+        public bool _isupvisible;
+        public bool IsUpVisible
+        {
+            get { return _isupvisible;}
+            set { _isupvisible = value; OnPropertyChanged(); }
+        }
+        public bool _isdownvisible;
+        public bool IsDownVisible
+        {
+            get { return _isdownvisible;}
+            set { _isdownvisible = value; OnPropertyChanged(); }
+        }
+
         public INavigation Navigation;
 
         public CardViewerViewModel(SettingsClass settings, List<Quest> cards, List<string> cardList, string selectedCard, int cardlevel, INavigation navigation)
@@ -165,11 +178,20 @@ namespace TSQDigitalHand
 
         public void SetCurrentCard(Card card, string Type)
         {
+            IsUpVisible = false;
+            IsDownVisible = false;
             string temp;
             switch (Type)
             {
                 case "Hero":
                     Hero hero = Cards[0].GetHero(card);
+
+                    if (hero.Name.Equals("Adventurer")) CardLevel = 0;
+                    else
+                    {
+                        if (CardLevel != 4) IsUpVisible = true;
+                        if (CardLevel != 1) IsDownVisible = true;
+                    }
 
                     Levels currLevel = hero.GetLevel(CardLevel);
 
@@ -298,6 +320,9 @@ namespace TSQDigitalHand
                 case "Guardian":
                     Guardian guardian = Cards[0].GetGuardian(card);
 
+                    if (CardLevel != 6) IsUpVisible = true;
+                    if (CardLevel != 4) IsDownVisible = true;
+
                     GLevel level = guardian.GetGLevel(CardLevel);
 
                     CardName = guardian.Name;
@@ -321,6 +346,60 @@ namespace TSQDigitalHand
                            ", Reward = " + level.Reward + ", Traits are " + CardTraits + ", Ability = " + CardAbility;
 
 
+                    break;
+                case "MonsterGroup":
+                    MonsterGroup group = Cards[0].GetMonsterGroup(card);
+
+                    CardName = group.Name;
+                    CardStrSkill = "";
+                    CardGoldLight = "";
+                    CardLevelExp = "Level: " + group.Level;
+                    CardCost = "";
+                    temp = "";
+                    CardTraits = temp;
+                    CardAbility = "";
+
+                    ImagePath = ImageFolderPath + group.Image;
+                    TTSString = CardName + "\n" + "Level " + group.Level;
+
+
+                    break;
+                case "PersonalQuest":
+                    PersonalQuest pq = Cards[0].GetPersonalQuest(card);
+
+                    CardName = pq.Name;
+                    CardStrSkill = pq.Description;
+                    CardGoldLight = "Reward\n" +  pq.Reward;
+                    CardLevelExp = "";
+                    CardCost = "";
+                    temp = "";
+                    CardTraits = temp;
+                    CardAbility = "";
+
+                    ImagePath = ImageFolderPath + pq.Image;
+                    TTSString = pq.Name + "\n" + pq.Description + "\nReward " + pq.Reward;
+
+                    break;
+                case "Guild":
+                    Guild g = Cards[0].GetGuild(card);
+
+                    CardName = g.Name;
+                    CardStrSkill = g.Description;
+                    CardGoldLight = "";
+                    CardLevelExp = "";
+                    CardCost = "";
+                    temp = "";
+                    CardTraits = temp;
+                    CardAbility = "";
+
+                    ImagePath = ImageFolderPath + g.Image;
+                    TTSString = g.Name + "\n" + g.Description;
+                    break;
+                case "Treasure":
+                    // To Do: Add treasure string here
+                    break;
+                case "Legendary":
+                    // To Do: Add Legendary string Here
                     break;
             }
 
@@ -409,7 +488,7 @@ namespace TSQDigitalHand
         public ICommand CloseWindowCommand => new Command(CloseWindow);
         async void CloseWindow()
         {
-            await Application.Current.MainPage.Navigation.PopModalAsync();
+            await Navigation.PopModalAsync();
         }
 
         CancellationTokenSource cts;

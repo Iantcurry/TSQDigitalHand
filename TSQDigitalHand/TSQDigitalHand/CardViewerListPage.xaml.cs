@@ -27,9 +27,17 @@ namespace TSQDigitalHand
             //pck_CardType.SelectedIndex = 0;
 
             _settings = settings;
+            var page = new CardViewerListPageViewModel(_settings, cards, Navigation);
+            page.ScrollListView = ScrollToTop;
+            BindingContext = page;
 
-            BindingContext = new CardViewerListPageViewModel(_settings, cards, Navigation);
+        }
 
+        public void ScrollToTop(string cardname)
+        {
+            System.Diagnostics.Debug.WriteLine(cardname);
+            //lv_CardNameList.ScrollTo(cardname, ScrollToPosition.MakeVisible, true);
+            sv_ListView.ScrollToAsync(0, 0, false);
         }
 
         class PickerModel
@@ -44,6 +52,13 @@ namespace TSQDigitalHand
                 CardTypes.Add("Weapons");
                 CardTypes.Add("Items");
                 CardTypes.Add("Spells");
+                CardTypes.Add("Monster");
+                CardTypes.Add("Guardian");
+                CardTypes.Add("Personal Quest");
+                CardTypes.Add("Guild");
+                CardTypes.Add("Treasure");
+                CardTypes.Add("Legendary");
+                CardTypes.Add("Rooms");
             }
         }
 
@@ -58,5 +73,8 @@ namespace TSQDigitalHand
                 lastCell = viewCell;
             }
         }
+
+
+
     }
 }

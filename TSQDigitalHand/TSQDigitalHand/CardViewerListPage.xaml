@@ -18,13 +18,13 @@
                     Height="200"/>
                     <RowDefinition 
                     x:Name="row1"
-                    Height="{Binding Height}"/>
+                    Height="Auto"/>
                     <RowDefinition 
                     x:Name="row2"
-                    Height="{Binding Height}"/>
+                    Height="Auto"/>
                     <RowDefinition 
                     x:Name="row3"
-                    Height="{Binding Height}"/>
+                    Height="Auto"/>
                     <RowDefinition 
                     x:Name="row4"
                     Height="*"/>
@@ -102,19 +102,22 @@
                         TextColor="White"
                         Grid.Column="0"
                         FontSize="{Binding TextSize}"
+                        Text="{Binding EntryText}"
                         />
 
                     </Grid>
                 </Frame>
 
-                <ScrollView
+                <ScrollView x:Name="sv_ListView"
                 Grid.Row="4"
-                BackgroundColor="Black">
+                BackgroundColor="Black"
+                VerticalOptions="FillAndExpand">
 
                     <ListView x:Name="lv_CardNameList"
                               ItemsSource="{Binding CardNames}"
                               RowHeight="{Binding Height}"
                               SelectedItem="{Binding lvSelectedItem, Mode=TwoWay}"
+                              VerticalOptions="FillAndExpand"
                               >
                         <ListView.ItemTemplate>
                             <DataTemplate>

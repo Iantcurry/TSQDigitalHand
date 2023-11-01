@@ -12,8 +12,7 @@ using System.Reflection;
 using Xamarin.Forms.PlatformConfiguration;
 using System.Drawing;
 using Forms9Patch;
-
-
+using System.Threading;
 
 namespace TSQDigitalHand
 {
@@ -66,6 +65,11 @@ namespace TSQDigitalHand
             rootValue = JsonConvert.DeserializeObject<RootValue>(jsonString);
             _cards = new List<Quest>(rootValue.Quests);
 
+
+            foreach (Quest quest in _cards)
+            {
+                quest.MonsterGroups = new List<MonsterGroup>(quest.GetMonsterGroups());
+            }
             //System.Diagnostics.Debug.WriteLine(_cards.Count.ToString() + " " +
             //    _cards[0].Heroes.Count.ToString() + " " +
             //    _cards[0].Spells.Count.ToString() + " " + _cards[0].Weapons.Count.ToString() + " " +
@@ -112,7 +116,7 @@ namespace TSQDigitalHand
 
         }
 
-        private async void SetMenuSizes()
+        private async Task SetMenuSizes()
         {
             SetMenuFontSizes();
 
@@ -121,37 +125,33 @@ namespace TSQDigitalHand
             if (lb_title.FittedFontSize != -1) lb_title2.FontSize = lb_title.FittedFontSize;
             else lb_title2.FontSize = lb_title.FontSize;
 
-
-            //System.Diagnostics.Debug.WriteLine(lb_title.FittedFontSize.ToString());
-            //System.Diagnostics.Debug.WriteLine(lb_title2.FontSize.ToString());
-            //System.Diagnostics.Debug.WriteLine(rw_row4.Height.ToString());
-
-            //var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
-
-            //double factor = mainDisplayInfo.Width / 160 * 2;
-
-            //double textsize = settings.FontSize;
-            //double titlesize = settings.FontSize;
-            //if (titlesize > (mainDisplayInfo.Width / factor)) titlesize = mainDisplayInfo.Width / factor;
-
-            //lb_title.FontSize = titlesize;
-            //lb_subtitle.FontSize = titlesize;
-            //btn_cardview.FontSize = textsize;
-            //btn_newgame.FontSize = textsize;
-            //btn_settings.FontSize = textsize;
-
-            //rw_row1.Height = (titlesize * 2) + 50;
-            //rw_row2.Height = (titlesize * 2) + 60;
-
-            //if (rw_row1.Height.Value > lb_title.Height) 
-            //if (lb_title.Height != -1) rw_row1.Height = lb_title.Height;
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
 
-            SetMenuSizes();
+            await SetMenuSizes();
         }
+
+        private async void OnNewGameClicked(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(Navigation.ModalStack.Count);
+
+            var modalPage = new SetupMainPage(settings, _cards);
+            await Navigation.showpageasdialog(modalPage);
+            GameCardData data = modalPage.CardData;
+
+            System.Diagnostics.Debug.WriteLine(data == null);
+
+            // Start New Game
+            if (data != null)
+            {
+                var page = new GameMainPage(data, settings);
+                await Navigation.showpageasdialog(page);
+            }
+        }
+
+
     }
 }

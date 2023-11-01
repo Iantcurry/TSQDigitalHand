@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TSQDigitalHand.PlayerInfo"
+             xmlns:local="clr-namespace:TSQDigitalHand"
+             xmlns:Forms9Patch="clr-namespace:Forms9Patch;assembly=Forms9Patch">
+    <ContentPage.BindingContext>
+        <local:PlayerInfo/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid BackgroundColor="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ImageButton x:Name="btn_Cancel"
+                        Grid.Row="0"
+                        HorizontalOptions="End"
+                        Source="X.png"
+                        BorderColor="White"
+                        BorderWidth="5"
+                        BackgroundColor="Black"
+                        Margin="5,5,5,5"
+                        Clicked="OnCancel"
+                        WidthRequest="200"
+                        />
+            <StackLayout
+                BackgroundColor="Black"
+                Orientation="Horizontal"
+                HeightRequest="150"
+                Grid.Row="1">
+
+                <ImageButton x:Name="btn_LifeDown"
+                             HorizontalOptions="Start"
+                             Source="minus.png"
+                             BackgroundColor="Black"
+                             BorderColor="White"
+                             BorderWidth="5"
+                             Margin="5,5,5,5"
+                             WidthRequest="150"
+                             Clicked="OnLoseLife"/>
+                <Forms9Patch:Label x:Name="lbl_Life"
+                                   HorizontalOptions="CenterAndExpand"
+                                   BackgroundColor="Black"
+                                   TextColor="White"
+                                   Lines="1"
+                                   Text="Life: 6"
+                                   VerticalTextAlignment="Center"
+                                   FontSize="{Binding TextSize}"
+                                   AutoFit="Width"/>
+                <ImageButton x:Name="btn_LifeUp"
+                             HorizontalOptions="Start"
+                             Source="plus.png"
+                             BackgroundColor="Black"
+                             BorderColor="White"
+                             BorderWidth="5"
+                             Margin="5,5,5,5"
+                             WidthRequest="150"
+                             Clicked="OnGainLife"/>
+
+            </StackLayout>
+            <StackLayout
+                BackgroundColor="Black"
+                Orientation="Horizontal"
+                HeightRequest="150"
+                Grid.Row="2">
+
+                <ImageButton x:Name="btn_ExpDown"
+                             HorizontalOptions="Start"
+                             Source="minus.png"
+                             BackgroundColor="Black"
+                             BorderColor="White"
+                             BorderWidth="5"
+                             Margin="5,5,5,5"
+                             WidthRequest="150"
+                             Clicked="OnLoseExp"/>
+                <Forms9Patch:Label x:Name="lbl_Exp"
+                                   HorizontalOptions="CenterAndExpand"
+                                   BackgroundColor="Black"
+                                   TextColor="White"
+                                   Lines="1"
+                                   Text="Exp: 0"
+                                   AutoFit="Width"
+                                   VerticalTextAlignment="Center"
+                                   FontSize="{Binding TextSize}"/>
+                <ImageButton x:Name="btn_ExpUp"
+                             HorizontalOptions="Start"
+                             Source="plus.png"
+                             BackgroundColor="Black"
+                             BorderColor="White"
+                             BorderWidth="5"
+                             Margin="5,5,5,5"
+                             WidthRequest="150"
+                             Clicked="OnGainExp"
+                             />
+
+            </StackLayout>
+            <ScrollView Grid.Row="3">
+                <StackLayout>
+                    <Button x:Name="btn_Guild"
+                                BackgroundColor="Black"
+                                BorderColor="White"
+                                BorderWidth="4"
+                                TextColor="White"
+                                Text="Guild"
+                                FontSize="{Binding TextSize}"
+                                VerticalOptions="CenterAndExpand"
+                                HeightRequest="200"
+                                Clicked="OnGuild"
+                            />
+                    <Button x:Name="btn_SideQuest"
+                                BackgroundColor="Black"
+                                BorderColor="White"
+                                BorderWidth="4"
+                                TextColor="White"
+                                Text="Side Quest"
+                                FontSize="{Binding TextSize}"
+                                VerticalOptions="CenterAndExpand"
+                                HeightRequest="200"
+                                Clicked="OnSideQuest"
+                            />
+                    <Button x:Name="btn_PrestigeClass"
+                                BackgroundColor="Black"
+                                BorderColor="White"
+                                BorderWidth="4"
+                                TextColor="White"
+                                Text="Prestige Class"
+                                FontSize="{Binding TextSize}"
+                                VerticalOptions="CenterAndExpand"
+                                HeightRequest="200"
+                                IsEnabled="False"
+                            />
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

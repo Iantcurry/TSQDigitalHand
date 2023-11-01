@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TSQDigitalHand.GameMainPage"
+             xmlns:Forms9Patch="clr-namespace:Forms9Patch;assembly=Forms9Patch"
+             xmlns:local="clr-namespace:TSQDigitalHand"
+             >
+    <ContentPage.BindingContext>
+        <local:GameMainPage/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid BackgroundColor="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ImageButton x:Name="btn_Cancel"
+                        Grid.Row="0"
+                        HorizontalOptions="End"
+                        Source="X.png"
+                        BorderColor="White"
+                        BorderWidth="5"
+                        BackgroundColor="Black"
+                        Margin="5,5,5,5"
+                        Clicked="OnCancel"
+                        WidthRequest="200"
+                        />
+            <Forms9Patch:Label x:Name="lbl_MenuTitle"
+                               Grid.Row="1"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="Choose Area"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Lines="1"
+                               AutoFit="Width"
+                               FontSize="{Binding TextSize}"
+                               />
+            <ScrollView Grid.Row="2"
+                        BackgroundColor="Black">
+                <StackLayout BackgroundColor="Black"
+                            >
+                    <Button x:Name="btn_PlayerInfo"
+                            BackgroundColor="Black"
+                            BorderColor="White"
+                            BorderWidth="4"
+                            TextColor="White"
+                            Text="Player Info"
+                            FontSize="{Binding TextSize}"
+                            Clicked="OnPlayerInfo"
+                            VerticalOptions="CenterAndExpand"
+                            HeightRequest="200"
+                        />
+                    <Button x:Name="btn_PlayerCards"
+                            BackgroundColor="Black"
+                            BorderColor="White"
+                            BorderWidth="4"
+                            TextColor="White"
+                            Text="Player Cards"
+                            FontSize="{Binding TextSize}"
+                            Clicked="OnPlayerCards"
+                            VerticalOptions="CenterAndExpand"
+                            HeightRequest="200"
+                        />
+                    <Button x:Name="btn_Village"
+                            BackgroundColor="Black"
+                            BorderColor="White"
+                            BorderWidth="4"
+                            TextColor="White"
+                            Text="Village"
+                            FontSize="{Binding TextSize}"
+                            Clicked="OnVillage"
+                            VerticalOptions="CenterAndExpand"
+                            HeightRequest="200"
+                        />
+                    <Button x:Name="btn_Dungeon"
+                            BackgroundColor="Black"
+                            BorderColor="White"
+                            BorderWidth="4"
+                            TextColor="White"
+                            Text="Dungeon"
+                            FontSize="{Binding TextSize}"
+                            Clicked="OnDungeon"
+                            VerticalOptions="CenterAndExpand"
+                            HeightRequest="200"
+                        />
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

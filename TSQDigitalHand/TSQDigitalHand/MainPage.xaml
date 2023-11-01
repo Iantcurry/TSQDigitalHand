@@ -70,6 +70,7 @@
             VerticalOptions="FillAndExpand"
             Margin="5,5,5,5"
             FontSize="96"
+            Clicked="OnNewGameClicked"
             />
             <Button 
             x:Name='btn_cardview'

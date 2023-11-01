@@ -345,6 +345,24 @@
               "Image": "stormhand_4.png"
             }
           ]
+        },
+        {
+          "Name": "Adventurer",
+          "Levels": [
+            {
+              "Level": 0,
+              "Strength": "1",
+              "Attack_Type": "Physical",
+              "Weapon_Skill": "2",
+              "Gold": "0",
+              "Light": "0",
+              "Exp": "0",
+              "Cost": "0",
+              "Traits": [ "Human", "Hero", "Starter" ],
+              "Ability": "(Adventurers have no CLASS, and thus may level into any LEVEL 1 HERO.)",
+              "Image": "adventurer.png"
+            }
+          ]
         }
       ],
       "Spells": [
@@ -468,6 +486,20 @@
           "Ability": "Dungeon\nIf the wielding HERO is also wielding another WEAPON, draw 1 card.",
           "Image": "shortsword.png"
 
+        },
+        {
+          "Name": "Dagger",
+          "Strength": "+1",
+          "Attack_Type": "Physical",
+          "Weapon_Skill": "2",
+          "Gold": "1",
+          "Light": "0",
+          "Exp": "0",
+          "Cost": "0",
+          "Traits": [ "Edged", "Weapon", "Starter" ],
+          "Ability": "After buying a card, you may destroy 1 (and only 1) DAGGER.\nDungeon\nIf wielded by a LEVEL 0 HERO, draw 1 card.",
+          "Image": "dagger.png"
+
         }
       ],
       "Items": [
@@ -509,6 +541,32 @@
           "Traits": [ "Item" ],
           "Ability": "Spoils\nDestroy this card to level up 1 Hero, Paying 0 Exp",
           "Image": "tomeofknowledge.png"
+        },
+        {
+          "Name": "Lantern",
+          "Strength": "n/a",
+          "Attack_Type": "n/a",
+          "Weapon_Skill": "n/a",
+          "Gold": "2",
+          "Light": "1",
+          "Exp": "0",
+          "Cost": "0",
+          "Traits": [ "Item", "Starter" ],
+          "Ability": "After you complete your Village Phase, you may take a Dungeon Phase.  If you do, you may not move out of The Wilderness.",
+          "Image": "lantern.png"
+        },
+        {
+          "Name": "Thunderstone Shard",
+          "Strength": "n/a",
+          "Attack_Type": "n/a",
+          "Weapon_Skill": "+2",
+          "Gold": "2",
+          "Light": "0",
+          "Exp": "0",
+          "Cost": "0",
+          "Traits": [ "Item", "Magic", "Starter" ],
+          "Ability": "Village or Dungeon\nIf you have 1 or more WOUNDS, draw 1 card.",
+          "Image": "thunderstoneshard.png"
         }
       ],
       "Monsters": [
@@ -1007,6 +1065,120 @@
               "Image": "smorgathequeen_6.png"
             }
           ]
+        }
+      ],
+      "PersonalQuests": [
+        {
+          "Name": "Find Blood Drinker",
+          "Description": "After defeating a level 0 or higher MONSTER which gives a WOUND, if you have a CLERIC, reveal this SIDE QUEST.\nWhen revealed, add the LEGENDARY WEAPON Blood Drinker to your discard pile.",
+          "Reward": "Legendary: Blood Drinker",
+          "Image": "findtheblooddrinker.png"
+        },
+        {
+          "Name": "Luck Stone",
+          "Description": "After you gain a Treasure Cache from defeating a MONSTER, reaveal this side quest.\nIf this side quest is revealed gain its EXP when the game ends and, when you gain a TREASURE card during the game look at the top 2 cards of the TREASURE deck, destroying 1",
+          "Reward": "4 EXP plus special ability",
+          "Image": "luckstone.png"
+        },
+        {
+          "Name": "Ready for Anything",
+          "Description": "Your deck must contain at least the following from THE MARKETPLACE: 2 different ITEMS; 2 different SPELLS; 2 different WEAPONS.",
+          "Reward": "9 EXP",
+          "Image": "readyforanything.png"
+        },
+        {
+          "Name": "Find a Dance Partner",
+          "Description": "After defeating a level 2 or higher MONSTER, if you have a HERO wielding a WEAPON and a SPELL, reveal this side quest.\nWhen revealed, add the LEGENDARY WEAPON Dancing Sword to your discard pile.",
+          "Reward": "Legendary: Dancing Sword",
+          "Image": "findadancepartner.png"
+        },
+        {
+          "Name": "Research the Legend",
+          "Description": "After putting 3 or more LEVELS of WIZARDS on top of your deck at the TEMPLE, reveal this side quest\nWhen revealed, gain the LEGENDARY SPELL Meteor Shower, placing it on top of your deck.",
+          "Reward": "Legendary: Meteor Shower",
+          "Image": "researchthelegend.png"
+        },
+        {
+          "Name": "Find the Orb",
+          "Description": "Add Later",
+          "Reward": "Legendary: Orb of Light and EXP equal to light in your deck",
+          "Image": "findtheorb.png"
+        },
+        {
+          "Name": "New Town Guards",
+          "Description": "Add Later, lots of typing",
+          "Reward": "8 EXP plus special ability",
+          "Image": "newtownguards.png"
+        },
+        {
+          "Name": "Jack-of-all-Trades",
+          "Description": "Still not typing these",
+          "Reward": "12 EXP",
+          "Image": "jackofalltrades.png"
+        },
+        {
+          "Name": "Avoiding the Plague",
+          "Description": "Nope, not yet",
+          "Reward": "6 EXP",
+          "Image": "avoidingtheplague.png"
+        },
+        {
+          "Name": "Scars of Battle",
+          "Description": "bah, some day",
+          "Reward": "EXP equal to twice your wounds",
+          "Image": "scarsofbattle.png"
+        },
+        {
+          "Name": "Plague Doctor",
+          "Description": "You must have 8 or more WOUND cards in your deck\nReveal this side quest when the game ends to collect EXP if the above requirements are met.",
+          "Reward": "18 EXP",
+          "Image": "plaguedoctor.png"
+        },
+        {
+          "Name": "Consistency is King",
+          "Description": "too long",
+          "Reward": "12 EXP",
+          "Image": "consistencyisking.png"
+        },
+        {
+          "Name": "Well-rounded",
+          "Description": "ya, right",
+          "Reward": "EXP based on number of classes on your heroes",
+          "Image": "wellrounded.png"
+        },
+        {
+          "Name": "Avoiding Attention",
+          "Description": "This side quest is worth -10 EXP for each GUARDIAN KEY you have found this game.\nReveal this side quest when the game ends to collect its EXP, to a minimum of 0",
+          "Reward": "15 EXP or less",
+          "Image": "avoidingattention.png"
+        },
+        {
+          "Name": "Build the Carriage",
+          "Description": "ya....still no",
+          "Reward": "Legendary: Thunderstone Carriage",
+          "Image": "buildthecarriage.png"
+        }
+      ],
+      "Guilds": [
+        {
+          "Name": "Clerics Training Guild",
+          "Description": "Spoils\nLevel up 1 CLERIC, paying normal EXP costs.",
+          "Image": "clericstrainingguild.png"
+        },
+        {
+          "Name": "Fighters Training Guild",
+          "Description": "Spoils\nLevel up 1 FIGHTER, paying normal EXP costs.",
+          "Image": "fighterstrainingguild.png"
+        },
+        {
+          "Name": "Rogues Training Guild",
+          "Description": "Spoils\nLevel up 1 ROGUE, paying normal EXP costs.",
+          "Image": "roguestrainingguild.png"
+        },
+        {
+          "Name": "Wizards Training Guild",
+          "Description": "Spoils\nLevel up 1 WIZARDS, paying normal EXP costs.",
+          "Image": "wizardstrainingguild.png"
         }
       ]
     }

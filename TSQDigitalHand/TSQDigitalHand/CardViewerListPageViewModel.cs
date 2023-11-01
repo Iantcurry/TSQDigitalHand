@@ -71,6 +71,19 @@ namespace TSQDigitalHand
                 }
                  }
         }
+        public string _entryText;
+        public string EntryText
+        {
+            get { return _entryText; }
+            set { 
+                _entryText = value;
+
+                CreateCardNameList();
+
+                SetCardList();
+
+                OnPropertyChanged(); }
+        }
 
 
         public CardViewerListPageViewModel()
@@ -140,6 +153,20 @@ namespace TSQDigitalHand
                         tempnames.Add(Cards[i].Guardians[j].Name);
                     }
                 }
+                if (ItemType == "All" || ItemType == "Personal Quest")
+                {
+                    foreach (PersonalQuest pq in Cards[i].PersonalQuests)
+                    {
+                        tempnames.Add(pq.Name);
+                    }
+                }
+                if (ItemType == "All" || ItemType == "Guild")
+                {
+                    foreach (Guild g in Cards[i].Guilds)
+                    {
+                        tempnames.Add(g.Name);
+                    }
+                }
             }
             tempnames.Sort();
             CardNames = new ObservableCollection<string>(tempnames);
@@ -163,12 +190,30 @@ namespace TSQDigitalHand
                 {
                     if (card.Type.Equals("Hero")) cardlevel = 1;
                     if (card.Type.Equals("Guardians")) cardlevel = 4;
+                    if (card.Name.Equals("Adventurer")) cardlevel = 0;
                 }
                 Navigation.PushModalAsync(new CardViewer(_settings, Cards, new List<string>(CardNames), lvSelectedItem, cardlevel, Navigation));
             }
         }
 
+        public delegate void ScrollListViewDelegate(string cardname);
+        public ScrollListViewDelegate ScrollListView = null;
 
+        public ICommand ScrollCommand => new Command(ScrollList);
+        public void ScrollList()
+        {
+            string cardname = CardNames[0];
+            ScrollListView.Invoke(cardname);
+        }
+
+        public void SetCardList()
+        {
+            System.Diagnostics.Debug.WriteLine(EntryText);
+
+            CardNames = new ObservableCollection<string>(CardNames.Where(c => c.ToLower().Contains(EntryText.ToLower())));
+
+            ScrollList();
+        }
     }
 
 }
