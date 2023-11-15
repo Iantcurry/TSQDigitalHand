@@ -73,30 +73,33 @@
             Clicked="OnNewGameClicked"
             />
             <Button 
-            x:Name='btn_cardview'
-            Grid.Row="5"
-            Text="Card Viewer"
-            BackgroundColor="Black"
-            TextColor="White"
-            BorderColor="White"
-            BorderWidth="5"
-            VerticalOptions="FillAndExpand"
-            Margin="5,5,5,5"
-            FontSize="96"
-            Clicked="OnCardViewCliked"
+                x:Name='btn_cardview'
+                Grid.Row="5"
+                Text="Card Viewer"
+                BackgroundColor="Black"
+                TextColor="White"
+                BorderColor="White"
+                BorderWidth="5"
+                VerticalOptions="FillAndExpand"
+                Margin="5,5,5,5"
+                FontSize="96"
+                Clicked="OnCardViewCliked"
+                ImageSource="magnifier.png"
             />
             <Button 
-            x:Name='btn_settings'
-            Grid.Row="6"
-            Text="Settings"
-            BackgroundColor="Black"
-            TextColor="White"
-            BorderColor="White"
-            BorderWidth="5"
-            VerticalOptions="FillAndExpand"
-            Margin="5,5,5,5"
-            FontSize="96"
-            Clicked="OnSettingsClicked"
+                x:Name='btn_settings'
+                Grid.Row="6"
+                Text="Settings"
+                BackgroundColor="Black"
+                TextColor="White"
+                BorderColor="White"
+                BorderWidth="5"
+                VerticalOptions="FillAndExpand"
+                Margin="5,5,5,5"
+                FontSize="96"
+                Clicked="OnSettingsClicked"
+                ImageSource="settings.png"
+                
             />
         </Grid>
     </ScrollView>

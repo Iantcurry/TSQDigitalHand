@@ -1,63 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ffil="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             x:Class="TSQDigitalHand.CardViewer">
+             x:Class="TSQDigitalHand.CardActionPage"
+             xmlns:ffil="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
     <ContentPage.Content>
         <Grid BackgroundColor="Black">
             <Grid.RowDefinitions>
                 <RowDefinition Height="200"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
-
-            <Grid
-                Grid.Row="0"
-                BackgroundColor="Black">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <ImageButton x:Name="btn_Magnifier"
-                             Grid.Column="0"
-                             Source="magnifier.png"
-                             BorderColor="White"
-                             BorderWidth="5"
-                             BackgroundColor="Black"
-                             Margin="5,5,5,5"
-                             Command="{Binding OnMagnifierClickedCommand}"
-                             />
+            <StackLayout Orientation="Horizontal"
+                         Grid.Row="0">
+                <ImageButton x:Name="btn_Info"
+                            HorizontalOptions="Start"
+                            Source="info.png"
+                            BorderColor="White"
+                            BorderWidth="5"
+                            BackgroundColor="Black"
+                            Margin="5,5,5,5"
+                            WidthRequest="200"
+                            Clicked="OnInfo"
+                            />
                 <ImageButton x:Name="btn_Mode"
-                             Grid.Column="1"
-                             Source="Text.png"
-                             BorderColor="White"
-                             BorderWidth="5"
-                             BackgroundColor="Black"
-                             Margin="5,5,5,5"
-                             Command="{Binding SwitchModeCommand}"
-                             />
-                <ImageButton x:Name="btn_Speech"
-                             Grid.Column="2"
-                             Source="Speech.png"
-                             BorderColor="White"
-                             BorderWidth="5"
-                             BackgroundColor="Black"
-                             Margin="5,5,5,5"
-                             Command="{Binding OnClickSpeechCommand}"
-                             />
-                <ImageButton x:Name="btn_Close"
-                             Grid.Column="3"
-                             Source="X.png"
-                             BorderColor="White"
-                             BorderWidth="5"
-                             BackgroundColor="Black"
-                             Margin="5,5,5,5"
-                             Command="{Binding CloseWindowCommand}"
-                             />
-
-            </Grid>
+                            HorizontalOptions="CenterAndExpand"
+                            Source="Text.png"
+                            BorderColor="White"
+                            BorderWidth="5"
+                            BackgroundColor="Black"
+                            Margin="5,5,5,5"
+                            WidthRequest="200"
+                            Clicked="OnImageMode"
+                            />
+                <ImageButton x:Name="btn_Cancel"
+                            HorizontalOptions="End"
+                            Source="X.png"
+                            BorderColor="White"
+                            BorderWidth="5"
+                            BackgroundColor="Black"
+                            Margin="5,5,5,5"
+                            Clicked="OnCancel"
+                            WidthRequest="200"
+                            />
+            </StackLayout>
             <AbsoluteLayout 
                 Grid.Row="1">
                 <ScrollView
@@ -133,27 +118,7 @@
                     <!--<ffil:CachedImage.Source>
                         <FileImageSource File="{Binding ImagePath}"/>
                     </ffil:CachedImage.Source-->
-                    </ffil:CachedImage>
-                    <ImageButton x:Name="btn_Up"
-                             BackgroundColor="Transparent"
-                             AbsoluteLayout.LayoutFlags="PositionProportional"
-                             AbsoluteLayout.LayoutBounds=".5,-.15, 100, 300"
-                             Source="Trans_Chevron.png"
-                             Rotation="270"
-                             Aspect="Fill"
-                             Command="{Binding UpLevelCommand}"
-                             IsVisible="{Binding IsUpVisible}"
-                              />
-                <ImageButton x:Name="btn_Down"
-                             BackgroundColor="Transparent"
-                             AbsoluteLayout.LayoutFlags="PositionProportional"
-                             AbsoluteLayout.LayoutBounds=".5,1.13, 100, 300"
-                             Source="Trans_Chevron.png"
-                             Rotation="90"
-                             Aspect="Fill"
-                             Command="{Binding DownLevelCommand}"
-                             IsVisible="{Binding IsDownVisible}"
-                           />
+                </ffil:CachedImage>
                 <ImageButton x:Name="btn_Left"
                              BackgroundColor="Transparent"
                              AbsoluteLayout.LayoutFlags="PositionProportional"
@@ -161,7 +126,7 @@
                              Source="Trans_Chevron.png"
                              Rotation="180"
                              Aspect="Fill"
-                             Command="{Binding PrevCardCommand}"
+                             Clicked="PrevCard"
                               />
                 <ImageButton x:Name="btn_Right"
                              BackgroundColor="Transparent"
@@ -170,10 +135,54 @@
                              Source="Trans_Chevron.png"
                              Rotation="0"
                              Aspect="Fill"
-                             Command="{Binding NextCardCommand}"
+                             Clicked="NextCard"
                              />
 
             </AbsoluteLayout>
+
+            <StackLayout Orientation="Horizontal"
+                         Grid.Row="2">
+                <ImageButton x:Name="btn_Draw"
+                            HorizontalOptions="End"
+                            Source="carddraw.png"
+                            BorderColor="White"
+                            BorderWidth="5"
+                            BackgroundColor="Black"
+                            Margin="5,5,5,5"
+                            WidthRequest="200"
+                            Clicked="OnDraw"
+                            />
+                <ImageButton x:Name="btn_Discard"
+                            HorizontalOptions="End"
+                            Source="carddiscard.png"
+                            BorderColor="White"
+                            BorderWidth="5"
+                            BackgroundColor="Black"
+                            Margin="5,5,5,5"
+                            WidthRequest="200"
+                            Clicked="OnDiscard"
+                            />
+                <ImageButton x:Name="btn_OnDeck"
+                            HorizontalOptions="End"
+                            Source="cardplace.png"
+                            BorderColor="White"
+                            BorderWidth="5"
+                            BackgroundColor="Black"
+                            Margin="5,5,5,5"
+                            WidthRequest="200"
+                            Clicked="OnPlaceONDeck"
+                            />
+                <ImageButton x:Name="btn_Destroy"
+                            HorizontalOptions="End"
+                            Source="paper.png"
+                            BorderColor="White"
+                            BorderWidth="5"
+                            BackgroundColor="Black"
+                            Margin="5,5,5,5"
+                            WidthRequest="200"
+                            Clicked="OnDestroy"
+                            />
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

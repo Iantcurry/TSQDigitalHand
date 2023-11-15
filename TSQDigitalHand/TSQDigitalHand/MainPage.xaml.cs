@@ -13,6 +13,7 @@ using Xamarin.Forms.PlatformConfiguration;
 using System.Drawing;
 using Forms9Patch;
 using System.Threading;
+using static Xamarin.Essentials.Permissions;
 
 namespace TSQDigitalHand
 {
@@ -35,12 +36,43 @@ namespace TSQDigitalHand
             LoadJSONData();
 
             settings = new SettingsClass();
+
             LoadSettings();
+
             SetMenuSizes();
+
+            CheckPermissions();
 
             //ImageFolderPath = DependencyService.Get<IGetImagePath>().Start();
 
             //System.Diagnostics.Debug.WriteLine(ImageFolderPath);
+        }
+
+        public async void CheckPermissions()
+        {
+            var status = await CheckAndRequestPermissionAsync(new Permissions.StorageRead());
+            if (status != PermissionStatus.Granted)
+            {
+                // Access Denied, do something?
+            }
+            status = await CheckAndRequestPermissionAsync(new Permissions.StorageWrite());
+            if (status != PermissionStatus.Granted)
+            {
+                // Access Denied, do something?
+            }
+
+        }
+
+        public async Task<PermissionStatus> CheckAndRequestPermissionAsync<T>(T permission)
+            where T : BasePermission
+        {
+            var status = await permission.CheckStatusAsync();
+            if (status != PermissionStatus.Granted)
+            {
+                status = await permission.RequestAsync();
+            }
+
+            return status;
         }
 
         public interface IGetImagePath

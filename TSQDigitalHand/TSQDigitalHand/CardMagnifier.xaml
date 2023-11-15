@@ -24,7 +24,7 @@
 
                     <ImageButton x:Name="btn_Bigger"
                              Grid.Column="0"
-                             Source="Magnifier.png"
+                             Source="zoomin.png"
                              BorderColor="White"
                              BorderWidth="5"
                              BackgroundColor="Black"
@@ -33,7 +33,7 @@
                              />
                     <ImageButton x:Name="btn_Smaller"
                              Grid.Column="1"
-                             Source="Magnifier.png"
+                             Source="zoomout.png"
                              BorderColor="White"
                              BorderWidth="5"
                              BackgroundColor="Black"

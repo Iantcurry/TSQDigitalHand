@@ -21,6 +21,7 @@ namespace TSQDigitalHand
         public List<Guild> Guilds { get; set; }
         public List<Treasure> Treasures { get; set; }
         public List<Legendary> Legendaries { get; set; }
+        public List<Room> Rooms { get; set; }
 
         public Quest()
         {
@@ -36,6 +37,7 @@ namespace TSQDigitalHand
             Guilds = new List<Guild>();
             Treasures = new List<Treasure>();
             Legendaries = new List<Legendary>();
+            Rooms = new List<Room>();
         }
 
         public Card GetCard(string cardname)
@@ -239,7 +241,16 @@ namespace TSQDigitalHand
         {
             foreach (Legendary legendary in Legendaries)
             {
-                if (!legendary.Name.Equals(card.Name)) return legendary;
+                if (legendary.Name.Equals(card.Name)) return legendary;
+            }
+            return null;
+        }
+
+        public Room GetRoom(string name)
+        {
+            foreach (Room r in Rooms)
+            {
+                if (r.Name.Equals(name)) return r;
             }
             return null;
         }
@@ -337,6 +348,12 @@ namespace TSQDigitalHand
             return cards;
         }
 
+        public List<Room> GetRoomList()
+        {
+            return new List<Room>(Rooms);
+            
+        }
+
         public List<MonsterGroup> GetMonsterGroups()
         {
             List<MonsterGroup> groups = new List<MonsterGroup>();
@@ -384,7 +401,7 @@ namespace TSQDigitalHand
             Name = name;
             Type = "Hero";
             CardLevel = level;
-            BaseLevel = 4;
+            BaseLevel = 1;
         }
 
         public Levels GetLevel(int level)
@@ -751,10 +768,18 @@ namespace TSQDigitalHand
         public string Type { get; set; }
         public int CardLevel { get; set; }
         public int BaseLevel { get; set; }
+        public string Strength { get; set; }
+        public string Attack_Type { get; set; }
+        public string Weapon_Skill { get; set; }
+        public string Gold { get; set; }
+        public string Light { get; set; }
+        public string Level { get; set; }
+        public string Exp { get; set; }
         public List<string> Traits { get; set; }
+        public string Ability { get; set; }
         public string Image { get; set; }
 
-        public Treasure()
+    public Treasure()
         {
             Type = "Treasure";
             CardLevel = -1;
@@ -790,6 +815,30 @@ namespace TSQDigitalHand
             return this.Name.CompareTo(incomingcard.Name);
         }
 
+    }
+    public class Room
+    {
+        public string Name { get; set; }
+        public string HP_Bonus { get; set; }
+        public string Armour_Bonus { get; set; }
+        public string Resistance_Bonus { get; set; }
+        public string Light_Req { get; set; }
+        public string Wound_Bonus { get; set; }
+        public string Wound_Type { get; set; }
+        public string Exp_Bonus { get; set; }
+        public string Reward { get; set; }
+        public string Level { get; set; }
+        public string Ability { get; set; }
+        public Room()
+        {
+
+        }
+
+        public int CompareTo(object incomingobject)
+        {
+            Room incomingroom = incomingobject as Room;
+            return this.Name.CompareTo(incomingroom.Name);
+        }
     }
 
 }

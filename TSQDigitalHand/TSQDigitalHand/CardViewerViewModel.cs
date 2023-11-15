@@ -158,6 +158,24 @@ namespace TSQDigitalHand
             set { _isdownvisible = value; OnPropertyChanged(); }
         }
 
+        public TextModeString _textstring;
+        public TextModeString TextString
+        {
+            get { return _textstring; }
+            set { _textstring = value;
+
+                CardName = value.CardName;
+                CardStrSkill = value.CardStrSkill;
+                CardGoldLight = value.CardGoldLight;
+                CardLevelExp = value.CardLevelExp;
+                CardCost = value.CardCost;
+                CardTraits = value.CardTraits;
+                CardAbility = value.CardAbility;
+                ImagePath = value.ImagePath;
+
+                OnPropertyChanged(); }
+        }
+
         public INavigation Navigation;
 
         public CardViewerViewModel(SettingsClass settings, List<Quest> cards, List<string> cardList, string selectedCard, int cardlevel, INavigation navigation)
@@ -397,6 +415,16 @@ namespace TSQDigitalHand
                     break;
                 case "Treasure":
                     // To Do: Add treasure string here
+                    Treasure treasure = Cards[0].GetTreasure(card);
+
+                    TextString = new TextModeString(_cards, card, ImageFolderPath);
+
+                    TTSString = CardName + ", Strength = " + treasure.Strength +
+                        treasure.Attack_Type + ", Weapon Skill = " + treasure.Weapon_Skill +
+                        ", Gold = " + treasure.Gold + ", Light = " + treasure.Light +
+                        ", Level = " + treasure.Level + ", Experience = " + treasure.Exp +
+                        ", Traits are " + CardTraits + ", Ability = " + CardAbility;
+
                     break;
                 case "Legendary":
                     // To Do: Add Legendary string Here

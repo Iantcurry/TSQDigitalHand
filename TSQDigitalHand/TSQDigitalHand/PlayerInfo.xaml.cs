@@ -106,5 +106,14 @@ namespace TSQDigitalHand
             await Navigation.showpageasdialog(modalPage);
         }
 
+        public async void OnSettings(object sender, EventArgs e)
+        {
+            // Call Settings Page
+            var page = new Settings(settings);
+            await Navigation.showpageasdialog(page);
+
+            // Update Settings
+            TextSize = settings.FontSize;
+        }
     }
 }

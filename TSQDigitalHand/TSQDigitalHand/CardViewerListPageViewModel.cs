@@ -167,6 +167,13 @@ namespace TSQDigitalHand
                         tempnames.Add(g.Name);
                     }
                 }
+                if (ItemType == "All" || ItemType == "Treasure")
+                {
+                    foreach (Treasure t in Cards[i].Treasures)
+                    {
+                        tempnames.Add(t.Name);
+                    }
+                }
             }
             tempnames.Sort();
             CardNames = new ObservableCollection<string>(tempnames);

@@ -15,6 +15,7 @@ namespace TSQDigitalHand
         public List<Card> PlayerGraveyard { get; set; }
         public List<Card> PlayerStatic { get; set; }
         public PlayerData playerData { get; set; }
+        public Dungeon DungeonData { get; set; }
 
         public GameCardData()
         {
@@ -26,6 +27,7 @@ namespace TSQDigitalHand
             PlayerGraveyard = new List<Card>();
             PlayerStatic = new List<Card>();
             playerData = new PlayerData();
+            DungeonData = new Dungeon();
         }
 
         public GameCardData(List<Quest> cards, List<Card> town, List<Card> dungeon, List<Card> player)
@@ -39,7 +41,12 @@ namespace TSQDigitalHand
             PlayerGraveyard = new List<Card>();
             PlayerStatic = new List<Card>();
             playerData = new PlayerData();
+            DungeonData = new Dungeon();
+            
+            DungeonData.Rooms["Wilderness"] = this.GetRoom("Wilderness");
+            DungeonData.Monsters["Wilderness"] = AllCards[0].GetMonster(this.GetCard("Giant Rat"));
             CreateStartingDeck();
+            CreateStartingHand();
         }
 
         public class PlayerData
@@ -103,7 +110,7 @@ namespace TSQDigitalHand
             if (this.playerData.exp < 0) this.playerData.exp = 0;
         }
 
-        private Card GetCard(string cardname)
+        public Card GetCard(string cardname)
         {
             Card card = null;
 
@@ -114,6 +121,53 @@ namespace TSQDigitalHand
             }
 
             return card;
+        }
+
+        public List<Card> GetCardList(string type, string trait)
+        {
+            List<Card> list = new List<Card>();
+            foreach (Quest q in AllCards)
+            {
+                list.AddRange(q.GetCardList(type, trait));
+            }
+            return list;
+        }
+
+        public Card GetMonsterGroupByLevel(int level)
+        {
+            foreach (Card c in DungeonCards)
+            {
+                if (c.Type.Equals("MonsterGroup"))
+                {
+                    if (c.CardLevel == level)
+                    {
+                        return c;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public List<Room> GetRoomList()
+        {
+            List<Room> rooms = new List<Room>();
+            foreach (Quest q in AllCards)
+            {
+                rooms.AddRange(q.Rooms);
+            }
+            return rooms;
+        }
+
+        public Room GetRoom(string name)
+        {
+            Room room = null;
+            foreach (Quest q in AllCards)
+            {
+                room = q.GetRoom(name);
+                if (room != null) break;
+            }
+
+            return room;
         }
 
 
@@ -135,6 +189,54 @@ namespace TSQDigitalHand
             {
                 PlayerDeck.Add(new Item("Thunderstone Shard"));
             }
+
+            var rnd = new Random();
+            Shuffler.Shuffle(PlayerDeck, rnd);
+
+            for (int i = 0; i < 6; i++)
+            {
+                System.Diagnostics.Debug.WriteLine(PlayerDeck[i].Name);
+            }
+        }
+
+        public void CreateStartingHand()
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                PlayerHand.Add(PlayerDeck[0]);
+                PlayerDeck.RemoveAt(0);
+            }
+        }
+        public class Dungeon
+        {
+            public Dictionary<string, Room> Rooms { get; set; }
+            public Dictionary<string, Monster> Monsters { get; set; }
+            public Dungeon()
+            {
+                Rooms = new Dictionary<string, Room>();
+                Monsters = new Dictionary<string, Monster>();
+                CreateNewDungeon();
+            }
+
+            public void CreateNewDungeon()
+            {
+                Monsters.Add("Wilderness", null);
+                Monsters.Add("Level_1_1", null);
+                Monsters.Add("Level_1_2", null);
+                Monsters.Add("Level_2_1", null);
+                Monsters.Add("Level_2_2", null);
+                Monsters.Add("Level_3_1", null);
+                Monsters.Add("Level_3_2", null);
+
+                Rooms.Add("Wilderness", null);
+                Rooms.Add("Level_1_1", null);
+                Rooms.Add("Level_1_2", null);
+                Rooms.Add("Level_2_1", null);
+                Rooms.Add("Level_2_2", null);
+                Rooms.Add("Level_3_1", null);
+                Rooms.Add("Level_3_2", null);
+            }
         }
     }
+
 }

@@ -1019,6 +1019,21 @@
           "Traits": [ "Humanoid", "Goblin Kings Guards" ],
           "Ability": "Before Battle\nDiscard 3 Cards.",
           "Image": "goblinking.png"
+        },
+        {
+          "Name": "Giant Rat",
+          "Group": "Wilderness",
+          "HP": "4",
+          "Armour": "0",
+          "Armour_Type": "n/a",
+          "Wounds": "0",
+          "Wound_Type": "n/a",
+          "Exp": "0",
+          "Reward": "None",
+          "Level": "0",
+          "Traits": [ "Vermin", "Wilderness" ],
+          "Ability": "Spoils\nYou may level up one of your LEVEL 0 HEROES (an adventurer), ignoring Experience cost.",
+          "Image": "giantrat.png"
         }
       ],
       "Guardians": [
@@ -1100,31 +1115,31 @@
         },
         {
           "Name": "Find the Orb",
-          "Description": "Add Later",
+          "Description": "After defeating a MONSTER, if ou have 3 or more HERO CLASSes and no more than 1 light, reveal this side quest.\nWhen revealed, add the LEGENDARY ITEM Orb of Light to your discard pile.\n Experience = the total light in your deck when the game ends.",
           "Reward": "Legendary: Orb of Light and EXP equal to light in your deck",
           "Image": "findtheorb.png"
         },
         {
           "Name": "New Town Guards",
-          "Description": "Add Later, lots of typing",
+          "Description": "Reveal this side quest (if needed) when you buy a level 1 HERO from The Guilds Quarter.  Place it under this side quest instead of in your discard pile.\nIf there are 3 or more HEROs under this side quest, collect its experience when the game ends and, each turn you may use all or some of teh text of 1 extra VILLAGE Location where your champion is not.",
           "Reward": "8 EXP plus special ability",
           "Image": "newtownguards.png"
         },
         {
           "Name": "Jack-of-all-Trades",
-          "Description": "Still not typing these",
+          "Description": "Your deck must contain 1 and only 1 copy of each card, by Title, in the Marketplace and in The Guilds Quarter.\nReveal this side quest when the game ends if the above requirements is met.",
           "Reward": "12 EXP",
           "Image": "jackofalltrades.png"
         },
         {
           "Name": "Avoiding the Plague",
-          "Description": "Nope, not yet",
+          "Description": "You must have 0 WOUNDS (tokens and cards).\nReveal this side quest when battling the GUARDIAN to cancel its WOUNDS to you.\nWhen the game ends, collect experience if the above requirement is met.",
           "Reward": "6 EXP",
           "Image": "avoidingtheplague.png"
         },
         {
           "Name": "Scars of Battle",
-          "Description": "bah, some day",
+          "Description": "Ignore any experience printed on your WOUND cards.\nThis side quests experience value equals twice the number of WOUNDS you have (cards and tokens).\nReveal this side quest when the game ends.",
           "Reward": "EXP equal to twice your wounds",
           "Image": "scarsofbattle.png"
         },
@@ -1136,13 +1151,13 @@
         },
         {
           "Name": "Consistency is King",
-          "Description": "too long",
+          "Description": "Choose 4 stacks in the Village, with 4 different card types.  Your deck must contain at least 1 card from each of these stacks, and no cards from the other stacks in the Village (not counting treasure cards).\nReveal this side quest when the game ends if teh above requirement is met",
           "Reward": "12 EXP",
           "Image": "consistencyisking.png"
         },
         {
           "Name": "Well-rounded",
-          "Description": "ya, right",
+          "Description": "This side quests experience is equal to the number of different classes on your LEVEL 2 or higher HEROES squared (1, 4, 9 or 16 experience).  Each HERO may only count towards 1 class.\nReveal this side quest when the game ends to collect its experience",
           "Reward": "EXP based on number of classes on your heroes",
           "Image": "wellrounded.png"
         },
@@ -1154,7 +1169,7 @@
         },
         {
           "Name": "Build the Carriage",
-          "Description": "ya....still no",
+          "Description": "To reveal this side qeust, pay 5 gold and discard the following as a VILLAGE Action: 1 item with Thunderstone in it's title; 1 LEVEL 2 or more Hero; 1 of each Gear Token.\nWhen you reveal this side quest, gain the LEGENDARY ITEM Thunderstone Carriage.'",
           "Reward": "Legendary: Thunderstone Carriage",
           "Image": "buildthecarriage.png"
         }
@@ -1179,6 +1194,232 @@
           "Name": "Wizards Training Guild",
           "Description": "Spoils\nLevel up 1 WIZARDS, paying normal EXP costs.",
           "Image": "wizardstrainingguild.png"
+        }
+      ],
+      "Treasures": [
+        {
+          "Name": "The Reaper",
+          "Strength": "+2",
+          "Attack_Type": "Physical",
+          "Weapon_Skill": "4",
+          "Gold": "n/a",
+          "Light": "1",
+          "Level": "n/a",
+          "Exp": "2",
+          "Traits": [ "Edged", "Cursed", "Magic", "Weapon", "Treasure" ],
+          "Ability": "DUNGEON\nDestroy Heroes to destroy 1 LEVEL 3 or lower Monster in the Dungeon whose Level is equal to or less than the combined LEVEL of all HEROES destroyed.  Gain experience equal to the experience printed on the destroyed Monster.",
+          "Image": "thereaper.png"
+        },
+        {
+          "Name": "Thunderstone Rug",
+          "Strength": "n/a",
+          "Attack_Type": "n/a",
+          "Weapon_Skill": "+2",
+          "Gold": "3",
+          "Light": "1",
+          "Level": "n/a",
+          "Exp": "2",
+          "Traits": [ "Magic", "Item", "Treasure" ],
+          "Ability": "You may ignore movement (!) effects.\nVillage or Spoils\nDiscard 1 card with Thunderstone in its title to give this card the STATIC keyword.",
+          "Image": "thunderstonerug.png"
+        },
+        {
+          "Name": "Flying Death",
+          "Strength": "+2",
+          "Attack_Type": "Magical",
+          "Weapon_Skill": "6",
+          "Gold": "n/a",
+          "Light": "n/a",
+          "Level": "n/a",
+          "Exp": "2",
+          "Traits": [ "Edged", "Magic", "Weapon", "Treasure" ],
+          "Ability": "-1 Weaponskill for ROGUES.\nDungoen\nChoose 1 MONSTER with Level 3 or lower.  Cancel 1 BEFORE BATTLE ability on it.",
+          "Image": "flyingdeath.png"
+        },
+        {
+          "Name": "Sun of the Forest",
+          "Strength": "1",
+          "Attack_Type": "Magical",
+          "Weapon_Skill": "n/a",
+          "Gold": "2",
+          "Light": "1",
+          "Level": "n/a",
+          "Exp": "4",
+          "Traits": [ "Magic", "Item", "Treasure" ],
+          "Ability": "Dungeon\nGive 1 WIZARD +2 LEVELs.",
+          "Image": "sunoftheforest.png"
+        },
+        {
+          "Name": "Huma",
+          "Strength": "4",
+          "Attack_Type": "Magical",
+          "Weapon_Skill": "0",
+          "Gold": "n/a",
+          "Light": "n/a",
+          "Level": "2",
+          "Exp": "2",
+          "Traits": [ "Ally", "Avian", "Beast", "Wizard", "Hero", "Treasure" ],
+          "Ability": "Before a Dungeon Room or Monster discards or destroys Huma, put it on top of your deck instead.",
+          "Image": "huma.png"
+        },
+        {
+          "Name": "Riens Ring",
+          "Strength": "n/a",
+          "Attack_Type": "n/a",
+          "Weapon_Skill": "+3",
+          "Gold": "3",
+          "Light": "n/a",
+          "Level": "n/a",
+          "Exp": "2",
+          "Traits": [ "Magic", "Item", "Treasure" ],
+          "Ability": "Village or Dungeon\nDraw 1 Level 2 Hero from the Guilds Quarter.  Return it before the turn ends.",
+          "Image": "riensring.png"
+        },
+        {
+          "Name": "Chain Lightning",
+          "Strength": "3",
+          "Attack_Type": "Magical",
+          "Weapon_Skill": "n/a",
+          "Gold": "n/a",
+          "Light": "1",
+          "Level": "n/a",
+          "Exp": "2",
+          "Traits": [ "Arcane", "Elemental", "Spell", "Treasure" ],
+          "Ability": "Spoils\nIf you defeated a Monster with leftover Attack equal to or greater than the HP of another Monster in the Dungeon, gain experience equal to the second Monsters Level.",
+          "Image": "chainlightning.png"
+        },
+        {
+          "Name": "Root Stride",
+          "Strength": "n/a",
+          "Attack_Type": "n/a",
+          "Weapon_Skill": "n/a",
+          "Gold": "n/a",
+          "Light": "1",
+          "Level": "n/a",
+          "Exp": "2",
+          "Traits": [ "Arcane", "Chaos", "Spell", "Treasure" ],
+          "Ability": "Dungeon\nRoll 1d6.  You may place your champion in a Dungeon Room with the same Level as half the roll (rounded up).  This is not considered movement.",
+          "Image": "rootstride.png"
+        },
+        {
+          "Name": "Orb of Opposing Forces",
+          "Strength": "n/a",
+          "Attack_Type": "n/a",
+          "Weapon_Skill": "+2",
+          "Gold": "1",
+          "Light": "1",
+          "Level": "n/a",
+          "Exp": "2",
+          "Traits": [ "Magic", "Item", "Treasure" ],
+          "Ability": "Dungeon\nChoose 1 MONSTER int he Dungeon and swap its Armor and Magic Resistance values.",
+          "Image": "orbofopposingforces.png"
+        },
+        {
+          "Name": "Ark of Creation",
+          "Strength": "n/a",
+          "Attack_Type": "n/a",
+          "Weapon_Skill": "n/a",
+          "Gold": "2",
+          "Light": "n/a",
+          "Level": "n/a",
+          "Exp": "2",
+          "Traits": [ "Elemental", "Magic", "Item", "Treasure" ],
+          "Ability": "Village or Dungeon\nDiscard another ELEMENTAL card to draw 2 cards.",
+          "Image": "arkofcreation.png"
+        }
+      ],
+      "Rooms": [
+        {
+          "Name": "Throne Room",
+          "HP_Bonus": "+0",
+          "Armour_Bonus": "+0",
+          "Resistance_Bonus": "+0",
+          "Light_Req": "2",
+          "Wound_Bonus": "0",
+          "Wound_Type": "n/a",
+          "Exp_Bonus": "2",
+          "Reward": "None",
+          "Level": "3",
+          "Ability": "Unless you have a Rogue, discard 1 random card, when you move into this room.\nAfter Battle\nPlace your Champion in the LEVEL 0 room."
+        },
+        {
+          "Name": "Vault",
+          "HP_Bonus": "+0",
+          "Armour_Bonus": "+0",
+          "Resistance_Bonus": "+0",
+          "Light_Req": "2",
+          "Wound_Bonus": "1",
+          "Wound_Type": "Normal",
+          "Exp_Bonus": "0",
+          "Reward": "Treasure",
+          "Level": "3",
+          "Ability": "After Battle\nPlace your Champion in a LEVEL 2 room."
+        },
+        {
+          "Name": "Sunken Well",
+          "HP_Bonus": "+1",
+          "Armour_Bonus": "+0",
+          "Resistance_Bonus": "+0",
+          "Light_Req": "1",
+          "Wound_Bonus": "0",
+          "Wound_Type": "n/a",
+          "Exp_Bonus": "0",
+          "Reward": "Lantern",
+          "Level": "2",
+          "Ability": "None"
+        },
+        {
+          "Name": "Crypt",
+          "HP_Bonus": "+0",
+          "Armour_Bonus": "+0",
+          "Resistance_Bonus": "+0",
+          "Light_Req": "1",
+          "Wound_Bonus": "1",
+          "Wound_Type": "Normal",
+          "Exp_Bonus": "0",
+          "Reward": "None",
+          "Level": "2",
+          "Ability": "Unless you have a Rogue, discard 1 Gear token after moving into this room."
+        },
+        {
+          "Name": "Mine",
+          "HP_Bonus": "+1",
+          "Armour_Bonus": "+0",
+          "Resistance_Bonus": "+0",
+          "Light_Req": "0",
+          "Wound_Bonus": "0",
+          "Wound_Type": "n/a",
+          "Exp_Bonus": "0",
+          "Reward": "Iron Ration",
+          "Level": "1",
+          "Ability": "None"
+        },
+        {
+          "Name": "Abandoned Gate",
+          "HP_Bonus": "+0",
+          "Armour_Bonus": "+0",
+          "Resistance_Bonus": "+0",
+          "Light_Req": "0",
+          "Wound_Bonus": "0",
+          "Wound_Type": "n/a",
+          "Exp_Bonus": "0",
+          "Reward": "None",
+          "Level": "1",
+          "Ability": "None"
+        },
+        {
+          "Name": "Wilderness",
+          "HP_Bonus": "+0",
+          "Armour_Bonus": "+0",
+          "Resistance_Bonus": "+0",
+          "Light_Req": "0",
+          "Wound_Bonus": "0",
+          "Wound_Type": "n/a",
+          "Exp_Bonus": "0",
+          "Reward": "None",
+          "Level": "0",
+          "Ability": "None"
+
         }
       ]
     }

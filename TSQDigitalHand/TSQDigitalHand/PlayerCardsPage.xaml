@@ -1,16 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TSQDigitalHand.SetupMainPage"
-             xmlns:Forms9Patch="clr-namespace:Forms9Patch;assembly=Forms9Patch"
+             x:Class="TSQDigitalHand.PlayerCardsPage"
              xmlns:local="clr-namespace:TSQDigitalHand"
-             >
+             xmlns:Forms9Patch="clr-namespace:Forms9Patch;assembly=Forms9Patch">
     <ContentPage.BindingContext>
-        <local:SetupMainPage/>
+        <local:PlayerCardsPage/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid
-            BackgroundColor="Black">
+        <Grid BackgroundColor="Black">
             <Grid.RowDefinitions>
                 <RowDefinition Height="200"/>
                 <RowDefinition Height="Auto"/>
@@ -46,39 +44,52 @@
                                Grid.Row="1"
                                BackgroundColor="Black"
                                TextColor="White"
-                               Text="Choose Setup Type"
+                               Text="Player Cards"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                Lines="1"
                                AutoFit="Width"
                                FontSize="{Binding TextSize}"
                                />
-            <StackLayout BackgroundColor="Black"
-                         Grid.Row="2">
-                <Button x:Name="btn_ManualSetup"
-                        BackgroundColor="Black"
-                        BorderColor="White"
-                        BorderWidth="4"
-                        TextColor="White"
-                        Text="Manual"
-                        FontSize="{Binding TextSize}"
-                        Clicked="OnManual"
-                        VerticalOptions="CenterAndExpand"
-                        HeightRequest="200"
-                    />
-                <Button x:Name="btn_RandomSetup"
-                        BackgroundColor="Black"
-                        BorderColor="White"
-                        BorderWidth="4"
-                        TextColor="White"
-                        Text="Random"
-                        FontSize="{Binding TextSize}"
-                        Clicked="OnRandom"
-                        VerticalOptions="CenterAndExpand"
-                        HeightRequest="200"
-                    />
-            </StackLayout>
-
+            <ScrollView Grid.Row="2"
+                        BackgroundColor="Black">
+                <StackLayout BackgroundColor="Black"
+                            >
+                    <Button x:Name="btn_PlayerHand"
+                            BackgroundColor="Black"
+                            BorderColor="White"
+                            BorderWidth="4"
+                            TextColor="White"
+                            Text="Hand"
+                            FontSize="{Binding TextSize}"
+                            Clicked="OnPlayerHand"
+                            VerticalOptions="CenterAndExpand"
+                            HeightRequest="200"
+                        />
+                    <Button x:Name="btn_PlayerDeck"
+                            BackgroundColor="Black"
+                            BorderColor="White"
+                            BorderWidth="4"
+                            TextColor="White"
+                            Text="Deck"
+                            FontSize="{Binding TextSize}"
+                            Clicked="OnPlayerDeck"
+                            VerticalOptions="CenterAndExpand"
+                            HeightRequest="200"
+                        />
+                    <Button x:Name="btn_PlayerDiscard"
+                            BackgroundColor="Black"
+                            BorderColor="White"
+                            BorderWidth="4"
+                            TextColor="White"
+                            Text="Discard"
+                            FontSize="{Binding TextSize}"
+                            Clicked="OnPlayerDiscard"
+                            VerticalOptions="CenterAndExpand"
+                            HeightRequest="200"
+                        />
+                </StackLayout>
+            </ScrollView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

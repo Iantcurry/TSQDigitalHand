@@ -183,6 +183,36 @@ namespace TSQDigitalHand
                     break;
                 case "Treasure":
                     // To Do: Add treasure string here
+                    Treasure treasure = Cards[0].GetTreasure(card);
+
+                    CardName = treasure.Name;
+                    string strtmp = "";
+                    if (treasure.Strength != "n/a") strtmp += "Str: " + treasure.Strength + " ";
+                    if (treasure.Attack_Type != "n/a") strtmp += treasure.Attack_Type[0] + "     ";
+                    if (treasure.Weapon_Skill != "n/a") strtmp += "WS: " + treasure.Weapon_Skill;
+                    CardStrSkill = strtmp;
+                    strtmp = "";
+                    if (treasure.Gold != "n/a") strtmp += "Gold: " + treasure.Gold + "     ";
+                    if (treasure.Light != "n/a") strtmp += "Light: " + treasure.Light;
+                    CardGoldLight = strtmp;
+                    strtmp = "";
+                    if (treasure.Level != "n/a") strtmp += "Level: " + treasure.Level + "     ";
+                    if (treasure.Exp != "n/a") strtmp += "Exp: " + treasure.Exp;
+                    CardLevelExp = strtmp;
+                    strtmp = "";
+                    CardCost = "";
+                    temp = "";
+                    foreach (string s in treasure.Traits)
+                    {
+                        temp += s + "  ";
+                    }
+                    CardTraits = temp;
+                    CardAbility = treasure.Ability;
+
+                    //Imagepath = treasure.Image;
+
+                    ImagePath = ImageFolderPath + treasure.Image;
+
                     break;
                 case "Legendary":
                     // To Do: Add Legendary string Here

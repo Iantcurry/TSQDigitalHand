@@ -56,6 +56,8 @@ namespace TSQDigitalHand.UWP
                 rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
+                Rg.Plugins.Popup.Popup.Init();
+                Xamarin.Forms.Forms.Init(e, Rg.Plugins.Popup.Popup.GetExtraAssemblies());
                 Xamarin.Forms.Forms.Init(e, Forms9Patch.UWP.Settings.AssembliesToInclude);
                 Forms9Patch.UWP.Settings.Initialize(this);
 

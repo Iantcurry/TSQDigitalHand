@@ -24,7 +24,6 @@ namespace TSQDigitalHand
             InitializeComponent();
 
             pck_CardType.ItemsSource = new PickerModel().CardTypes;
-            //pck_CardType.SelectedIndex = 0;
 
             _settings = settings;
             var page = new CardViewerListPageViewModel(_settings, cards, Navigation);
@@ -36,7 +35,6 @@ namespace TSQDigitalHand
         public void ScrollToTop(string cardname)
         {
             System.Diagnostics.Debug.WriteLine(cardname);
-            //lv_CardNameList.ScrollTo(cardname, ScrollToPosition.MakeVisible, true);
             sv_ListView.ScrollToAsync(0, 0, false);
         }
 

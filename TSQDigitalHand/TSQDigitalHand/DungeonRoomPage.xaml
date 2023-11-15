@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TSQDigitalHand.DungeonRoomPage"
+             xmlns:Forms9Patch="clr-namespace:Forms9Patch;assembly=Forms9Patch"
+             xmlns:local="clr-namespace:TSQDigitalHand">
+    <ContentPage.BindingContext>
+        <local:DungeonRoomPage/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid BackgroundColor="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="200"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0"
+                         Orientation="Horizontal"
+                         BackgroundColor="Black"
+                         >
+                <ImageButton x:Name="btn_Settings"
+                        HorizontalOptions="Start"
+                        Source="settings.png"
+                        BorderColor="White"
+                        BorderWidth="5"
+                        BackgroundColor="Black"
+                        Margin="5,5,5,5"
+                        Clicked="OnSettings"
+                        WidthRequest="200"
+                        />
+                <ImageButton x:Name="btn_TextToSpeech"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="Speech.png"
+                        BorderColor="White"
+                        BorderWidth="5"
+                        BackgroundColor="Black"
+                        Margin="5,5,5,5"
+                        Clicked="OnTextToSpeech"
+                        WidthRequest="200"
+                        />
+                <ImageButton x:Name="btn_SwitchRoom"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="two.png"
+                        BorderColor="White"
+                        BorderWidth="5"
+                        BackgroundColor="Black"
+                        Margin="5,5,5,5"
+                        Clicked="OnSwitchRoom"
+                        WidthRequest="200"
+                        />
+                <ImageButton x:Name="btn_Cancel"
+                        HorizontalOptions="End"
+                        Source="X.png"
+                        BorderColor="White"
+                        BorderWidth="5"
+                        BackgroundColor="Black"
+                        Margin="5,5,5,5"
+                        Clicked="OnCancel"
+                        WidthRequest="200"
+                        />
+            </StackLayout>
+            <Button x:Name="btn_RoomName"
+                    Grid.Row="1"
+                    BackgroundColor="Black"
+                    BorderColor="White"
+                    BorderWidth="4"
+                    TextColor="White"
+                    Text="Choose Room"
+                    FontSize="{Binding TextSize}"
+                    Clicked="OnRoomName"
+                    VerticalOptions="CenterAndExpand"
+                    MinimumHeightRequest="200"
+                    />
+            <ScrollView BackgroundColor="Black"
+                        Grid.Row="2"
+                        VerticalOptions="FillAndExpand">
+                <StackLayout BackgroundColor="Black"
+                             VerticalOptions="FillAndExpand">
+                    <Forms9Patch:Label x:Name="lbl_Light"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="Light Req: 0"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Lines="1"
+                               AutoFit="Width"
+                               FontSize="{Binding TextSize}"
+                               />
+                    <StackLayout Orientation="Horizontal"
+                                 BackgroundColor="Black"
+                                 HorizontalOptions="FillAndExpand">
+                        <Forms9Patch:Label x:Name="lbl_HP"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="HP: +0"
+                               HorizontalOptions="Start"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Lines="1"
+                               AutoFit="Width"
+                               FontSize="{Binding TextSize}"
+                               />
+                        <Forms9Patch:Label x:Name="lbl_Armour"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="Ar: +0"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Lines="1"
+                               AutoFit="Width"
+                               FontSize="{Binding TextSize}"
+                               HorizontalOptions="CenterAndExpand"
+                               />
+                        <Forms9Patch:Label x:Name="lbl_Resistance"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="Res: +0"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Lines="1"
+                               AutoFit="Width"
+                               FontSize="{Binding TextSize}"
+                               HorizontalOptions="End"
+                               />
+                    </StackLayout>
+                    <Forms9Patch:Label x:Name="lbl_Ability"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="None"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalOptions="CenterAndExpand"
+                               FontSize="{Binding TextSize}"
+                               />
+                    <StackLayout Orientation="Horizontal"
+                                 BackgroundColor="Black"
+                                 HorizontalOptions="FillAndExpand">
+                        <Forms9Patch:Label x:Name="lbl_Wounds"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="Wnd: +0"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Lines="1"
+                               AutoFit="Width"
+                               FontSize="{Binding TextSize}"
+                               HorizontalOptions="StartAndExpand"
+                               />
+                        <Forms9Patch:Label x:Name="lbl_WoundType"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="Type: n/a"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Lines="1"
+                               AutoFit="Width"
+                               FontSize="{Binding TextSize}"
+                               HorizontalOptions="End"
+                               />
+                    </StackLayout>
+                    <Forms9Patch:Label x:Name="lbl_Exp"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="Exp: 0"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Lines="1"
+                               AutoFit="Width"
+                               FontSize="{Binding TextSize}"
+                               HorizontalOptions="CenterAndExpand"
+                               />
+
+                    <Forms9Patch:Label x:Name="lbl_Reward"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="Reward: None"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Lines="1"
+                               AutoFit="Width"
+                               FontSize="{Binding TextSize}"
+                               HorizontalOptions="CenterAndExpand"
+                               />
+                </StackLayout>
+            </ScrollView>
+            <Forms9Patch:Button x:Name="btn_Monster"
+                    Grid.Row="3"
+                    BackgroundColor="Black"
+                    BorderColor="White"
+                    BorderWidth="4"
+                    TextColor="White"
+                    Text="Monster"
+                    FontSize="{Binding TextSize}"
+                    Clicked="OnMonster"
+                    VerticalOptions="CenterAndExpand"
+                    MinimumHeightRequest="200"
+                    Lines="1"
+                    AutoFit="Width"
+                    />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

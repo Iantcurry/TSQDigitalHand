@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TSQDigitalHand.CardListPage"
+             xmlns:local="clr-namespace:TSQDigitalHand">
+    <ContentPage.BindingContext>
+        <local:CardListPage/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid BackgroundColor="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0"
+                     Orientation="Horizontal"
+                     BackgroundColor="Black"
+                     >
+                <ImageButton x:Name="btn_Ok"
+                        HorizontalOptions="StartAndExpand"
+                        Source="check2.png"
+                        BorderColor="White"
+                        BorderWidth="5"
+                        BackgroundColor="Black"
+                        Margin="5,5,5,5"
+                        Clicked="OnOk"
+                        WidthRequest="200"
+                        
+                        />
+                <ImageButton x:Name="btn_Settings"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="settings.png"
+                        BorderColor="White"
+                        BorderWidth="5"
+                        BackgroundColor="Black"
+                        Margin="5,5,5,5"
+                        Clicked="OnSettings"
+                        WidthRequest="200"
+                        
+                        />
+                <ImageButton x:Name="btn_Cancel"
+                        HorizontalOptions="End"
+                        Source="X.png"
+                        BorderColor="White"
+                        BorderWidth="5"
+                        BackgroundColor="Black"
+                        Margin="5,5,5,5"
+                        Clicked="OnCancel"
+                        WidthRequest="200"
+                        />                
+            </StackLayout>
+            <Frame
+                Grid.Row="1"
+                BackgroundColor="White"
+                Padding="0"
+                >
+                <Grid
+                    Margin="2"
+                    >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Entry
+                        x:Name="ent_Search"
+                        BackgroundColor="Black"
+                        Placeholder="Search...."
+                        PlaceholderColor="White"
+                        TextColor="White"
+                        Grid.Column="0"
+                        FontSize="{Binding TextSize}"
+                        Text="{Binding EntryText}"
+                        />
+
+                </Grid>
+            </Frame>
+            <ScrollView x:Name="sv_ListView"
+                Grid.Row="2"
+                BackgroundColor="Black"
+                VerticalOptions="FillAndExpand">
+
+                <ListView x:Name="lv_CardNameList"
+                              ItemsSource="{Binding CardNames}"
+                              SelectedItem="{Binding lvSelectedItem, Mode=TwoWay}"
+                              VerticalOptions="FillAndExpand"
+                              HasUnevenRows="True"
+                              >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell Tapped="ViewCell_Tapped"
+                                      >
+
+                                <Label
+                                        BackgroundColor="Black"
+                                        TextColor="White"
+                                        LineBreakMode="MiddleTruncation"
+                                        FontSize="{Binding BindingContext.TextSize, Source={x:Reference lv_CardNameList}}"
+                                        Text="{Binding}"
+                                        />
+
+                            </ViewCell>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+
+                </ListView>
+
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

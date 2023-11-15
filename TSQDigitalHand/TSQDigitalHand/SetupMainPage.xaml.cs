@@ -943,10 +943,20 @@ namespace TSQDigitalHand
             await Navigation.PopModalAsync();
         }
 
-        public async void CancelClicked(object sender, EventArgs e)
+        public async void OnCancel(object sender, EventArgs e)
         {
             CardData = null;
             await Navigation.PopModalAsync();
+        }
+
+        public async void OnSettings(object sender, EventArgs e)
+        {
+            // Call Settings Page
+            var page = new Settings(AllSettings);
+            await Navigation.showpageasdialog(page);
+
+            // Update Settings
+            TextSize = AllSettings.FontSize;
         }
     }
 }

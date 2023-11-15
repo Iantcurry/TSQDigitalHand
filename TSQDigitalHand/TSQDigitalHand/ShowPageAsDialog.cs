@@ -19,7 +19,7 @@ namespace TSQDigitalHand
                     waithandle.Set();
             };
             await navigation.PushModalAsync(page);
-            System.Diagnostics.Debug.WriteLine(navigation.ModalStack.Count);
+            //System.Diagnostics.Debug.WriteLine(navigation.ModalStack.Count);
             await Task.Run(() => waithandle.WaitOne());
         }
     }

@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TSQDigitalHand.GameMainPage"
+             x:Class="TSQDigitalHand.VillageMainPage"
              xmlns:Forms9Patch="clr-namespace:Forms9Patch;assembly=Forms9Patch"
-             xmlns:local="clr-namespace:TSQDigitalHand"
-             >
+             xmlns:local="clr-namespace:TSQDigitalHand">
     <ContentPage.BindingContext>
-        <local:GameMainPage/>
+        <local:VillageMainPage/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid BackgroundColor="Black">
@@ -28,6 +27,7 @@
                         Margin="5,5,5,5"
                         Clicked="OnSettings"
                         WidthRequest="200"
+                        
                         />
                 <ImageButton x:Name="btn_Cancel"
                         HorizontalOptions="End"
@@ -44,7 +44,7 @@
                                Grid.Row="1"
                                BackgroundColor="Black"
                                TextColor="White"
-                               Text="Choose Area"
+                               Text="Choose Option"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                Lines="1"
@@ -55,49 +55,49 @@
                         BackgroundColor="Black">
                 <StackLayout BackgroundColor="Black"
                             >
-                    <Button x:Name="btn_PlayerInfo"
+                    <Button x:Name="btn_Hero"
                             BackgroundColor="Black"
                             BorderColor="White"
                             BorderWidth="4"
                             TextColor="White"
-                            Text="Player Info"
+                            Text="Add/Upgrade Hero"
                             FontSize="{Binding TextSize}"
-                            Clicked="OnPlayerInfo"
+                            Clicked="OnHero"
                             VerticalOptions="CenterAndExpand"
-                            HeightRequest="200"
+                            MinimumHeightRequest="200"
                         />
-                    <Button x:Name="btn_PlayerCards"
+                    <Button x:Name="btn_Market"
                             BackgroundColor="Black"
                             BorderColor="White"
                             BorderWidth="4"
                             TextColor="White"
-                            Text="Player Cards"
+                            Text="Add Market Card"
                             FontSize="{Binding TextSize}"
-                            Clicked="OnPlayerCards"
+                            Clicked="OnMarket"
                             VerticalOptions="CenterAndExpand"
-                            HeightRequest="200"
+                            MinimumHeightRequest="200"
                         />
-                    <Button x:Name="btn_Village"
+                    <Button x:Name="btn_Treasure"
                             BackgroundColor="Black"
                             BorderColor="White"
                             BorderWidth="4"
                             TextColor="White"
-                            Text="Village"
+                            Text="Add Treasure"
                             FontSize="{Binding TextSize}"
-                            Clicked="OnVillage"
+                            Clicked="OnTreasure"
                             VerticalOptions="CenterAndExpand"
-                            HeightRequest="200"
+                            MinimumHeightRequest="200"
                         />
-                    <Button x:Name="btn_Dungeon"
+                    <Button x:Name="btn_AddCard"
                             BackgroundColor="Black"
                             BorderColor="White"
                             BorderWidth="4"
                             TextColor="White"
-                            Text="Dungeon"
+                            Text="Add Card"
                             FontSize="{Binding TextSize}"
-                            Clicked="OnDungeon"
+                            Clicked="OnAddCard"
                             VerticalOptions="CenterAndExpand"
-                            HeightRequest="200"
+                            MinimumHeightRequest="200"
                         />
                 </StackLayout>
             </ScrollView>

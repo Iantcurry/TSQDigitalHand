@@ -1,16 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TSQDigitalHand.SetupMainPage"
+             x:Class="TSQDigitalHand.DiscardMainPage"
              xmlns:Forms9Patch="clr-namespace:Forms9Patch;assembly=Forms9Patch"
-             xmlns:local="clr-namespace:TSQDigitalHand"
-             >
+             xmlns:local="clr-namespace:TSQDigitalHand">
     <ContentPage.BindingContext>
-        <local:SetupMainPage/>
+        <local:DiscardMainPage/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid
-            BackgroundColor="Black">
+        <Grid BackgroundColor="Black">
             <Grid.RowDefinitions>
                 <RowDefinition Height="200"/>
                 <RowDefinition Height="Auto"/>
@@ -46,39 +44,30 @@
                                Grid.Row="1"
                                BackgroundColor="Black"
                                TextColor="White"
-                               Text="Choose Setup Type"
+                               Text="Card Count: "
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                Lines="1"
                                AutoFit="Width"
                                FontSize="{Binding TextSize}"
                                />
-            <StackLayout BackgroundColor="Black"
-                         Grid.Row="2">
-                <Button x:Name="btn_ManualSetup"
-                        BackgroundColor="Black"
-                        BorderColor="White"
-                        BorderWidth="4"
-                        TextColor="White"
-                        Text="Manual"
-                        FontSize="{Binding TextSize}"
-                        Clicked="OnManual"
-                        VerticalOptions="CenterAndExpand"
-                        HeightRequest="200"
-                    />
-                <Button x:Name="btn_RandomSetup"
-                        BackgroundColor="Black"
-                        BorderColor="White"
-                        BorderWidth="4"
-                        TextColor="White"
-                        Text="Random"
-                        FontSize="{Binding TextSize}"
-                        Clicked="OnRandom"
-                        VerticalOptions="CenterAndExpand"
-                        HeightRequest="200"
-                    />
-            </StackLayout>
-
+            <ScrollView Grid.Row="2"
+                        BackgroundColor="Black">
+                <StackLayout BackgroundColor="Black"
+                            >
+                    <Button x:Name="btn_View"
+                            BackgroundColor="Black"
+                            BorderColor="White"
+                            BorderWidth="4"
+                            TextColor="White"
+                            Text="View Cards"
+                            FontSize="{Binding TextSize}"
+                            Clicked="OnView"
+                            VerticalOptions="CenterAndExpand"
+                            HeightRequest="200"
+                        />
+                </StackLayout>
+            </ScrollView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TSQDigitalHand.GameMainPage"
+             x:Class="TSQDigitalHand.DeckMainPage"
              xmlns:Forms9Patch="clr-namespace:Forms9Patch;assembly=Forms9Patch"
-             xmlns:local="clr-namespace:TSQDigitalHand"
-             >
+             xmlns:local="clr-namespace:TSQDigitalHand">
     <ContentPage.BindingContext>
-        <local:GameMainPage/>
+        <local:DeckMainPage/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid BackgroundColor="Black">
@@ -44,7 +43,7 @@
                                Grid.Row="1"
                                BackgroundColor="Black"
                                TextColor="White"
-                               Text="Choose Area"
+                               Text="Card Count: "
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                Lines="1"
@@ -55,47 +54,47 @@
                         BackgroundColor="Black">
                 <StackLayout BackgroundColor="Black"
                             >
-                    <Button x:Name="btn_PlayerInfo"
+                    <Button x:Name="btn_Reveal"
                             BackgroundColor="Black"
                             BorderColor="White"
                             BorderWidth="4"
                             TextColor="White"
-                            Text="Player Info"
+                            Text="Reveal Cards"
                             FontSize="{Binding TextSize}"
-                            Clicked="OnPlayerInfo"
+                            Clicked="OnReveal"
                             VerticalOptions="CenterAndExpand"
                             HeightRequest="200"
                         />
-                    <Button x:Name="btn_PlayerCards"
+                    <Button x:Name="btn_Discard"
                             BackgroundColor="Black"
                             BorderColor="White"
                             BorderWidth="4"
                             TextColor="White"
-                            Text="Player Cards"
+                            Text="Discard Cards"
                             FontSize="{Binding TextSize}"
-                            Clicked="OnPlayerCards"
+                            Clicked="OnDiscard"
                             VerticalOptions="CenterAndExpand"
                             HeightRequest="200"
                         />
-                    <Button x:Name="btn_Village"
+                    <Button x:Name="btn_Shuffle"
                             BackgroundColor="Black"
                             BorderColor="White"
                             BorderWidth="4"
                             TextColor="White"
-                            Text="Village"
+                            Text="Shuffle"
                             FontSize="{Binding TextSize}"
-                            Clicked="OnVillage"
+                            Clicked="OnShuffle"
                             VerticalOptions="CenterAndExpand"
                             HeightRequest="200"
                         />
-                    <Button x:Name="btn_Dungeon"
+                    <Button x:Name="btn_FullShuffle"
                             BackgroundColor="Black"
                             BorderColor="White"
                             BorderWidth="4"
                             TextColor="White"
-                            Text="Dungeon"
+                            Text="Full Shuffle"
                             FontSize="{Binding TextSize}"
-                            Clicked="OnDungeon"
+                            Clicked="OnFullShuffle"
                             VerticalOptions="CenterAndExpand"
                             HeightRequest="200"
                         />

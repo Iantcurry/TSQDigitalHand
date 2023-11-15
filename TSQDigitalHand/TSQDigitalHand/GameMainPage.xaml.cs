@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -45,32 +47,65 @@ namespace TSQDigitalHand
 
         public async void OnPlayerInfo(object sender, EventArgs e)
         {
-            // Call player info screen, pass player cards
+            // Call player info screen, pass player cards, player data, and All Cards
             var page = new PlayerInfo(GameData.AllCards, GameData.PlayerCards, GameData.playerData, settings);
             await Navigation.showpageasdialog(page);
             GameData.playerData = page.playerData;
         }
 
-        public void OnPlayerCards(object sender, EventArgs e)
+        public async void OnPlayerCards(object sender, EventArgs e)
         {
-            // Call player card screen, pass player deck/hand/graveyard
+            // Call player card screen, pass player cards, player data(?), and All Cards
+            var page = new PlayerCardsPage(GameData, settings);
+            await Navigation.showpageasdialog(page);
+            GameData = page.GameData;
+
         }
 
-        public void OnVillage(object sender, EventArgs e)
+        public async void OnVillage(object sender, EventArgs e)
         {
             // Call village screen, pass player deck/hand/graveyard and Town cards
+            var page = new VillageMainPage(GameData, settings);
+            await Navigation.showpageasdialog(page);
+            GameData = page.GameData;
         }
 
-        public void OnDungeon(object sender, EventArgs e)
+        public async void OnDungeon(object sender, EventArgs e)
         {
             // Call dungeon screen, pass Dungeon cards, and rooms
+            var page = new DungeonMainPage(GameData, settings);
+            await Navigation.showpageasdialog(page);
+            GameData = page.GameData;
+        }
+
+        public async void OnSettings(object sender, EventArgs e)
+        {
+            // Call Settings Page
+            var page = new Settings(settings);
+            await Navigation.showpageasdialog(page);
+
+            // Update Settings
+            TextSize = settings.FontSize;
         }
 
         public async void OnCancel(object sender, EventArgs e)
         {
             // Add warning here??
+            var popup = new ExitWarningPopup(settings);
+            var waithandle = new EventWaitHandle(false, EventResetMode.AutoReset);
+            popup.Disappearing += (s, f) =>
+            {
+                waithandle.Set();
+            };
+            await Navigation.PushPopupAsync(popup);
+            //System.Diagnostics.Debug.WriteLine(navigation.ModalStack.Count);
+            await Task.Run(() => waithandle.WaitOne());
+
             // Close Page back to main menu
-            await Navigation.PopModalAsync();
+            if (popup.verification)
+            {
+                await Navigation.PopModalAsync();
+            }
         }
     }
 }

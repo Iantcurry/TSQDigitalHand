@@ -79,7 +79,6 @@ namespace TSQDigitalHand.Droid
             }
             public override Android.Views.View GetView(int position, Android.Views.View convertView, ViewGroup parent)
             {
-                Android.Views.View view = convertView;
                 convertView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.celllayout, null);
                 TextView text = convertView.FindViewById<TextView>(Resource.Id.textview1);
                 text.Text = mList[position];

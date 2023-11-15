@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TSQDigitalHand.CounterPopup"
+             xmlns:Forms9Patch="clr-namespace:Forms9Patch;assembly=Forms9Patch"
+             xmlns:local="clr-namespace:TSQDigitalHand"
+             CloseWhenBackgroundIsClicked="False"
+             >
+    <pages:PopupPage.BindingContext>
+        <local:CounterPopup/>
+    </pages:PopupPage.BindingContext>
+    <StackLayout BackgroundColor="Black" 
+                 HorizontalOptions="Center" 
+                 VerticalOptions="Center"
+                 WidthRequest="600"
+                 HeightRequest="800">
+        <StackLayout BackgroundColor="Black"
+                     Orientation="Horizontal">
+            <ImageButton x:Name="btn_OK"
+                         BackgroundColor="Black"
+                         Source="check2.png"
+                         HorizontalOptions="StartAndExpand"
+                         WidthRequest="200"
+                         HeightRequest="200"
+                         Clicked="btn_OK_Clicked"/>
+            <ImageButton x:Name="btn_Cancel"
+                         BackgroundColor="Black"
+                         Source="X.png"
+                         HorizontalOptions="EndAndExpand"
+                         WidthRequest="200"
+                         HeightRequest="200"
+                         Clicked="btn_Cancel_Clicked"/>
+        </StackLayout>            
+        <Forms9Patch:Label x:Name="lbl_MenuTitle"
+                            BackgroundColor="Black"
+                            TextColor="White"
+                            Text="How Many?"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            Lines="1"
+                            AutoFit="Width"
+                            FontSize="{Binding TextSize}"
+                            />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+        <ImageButton x:Name="btn_Add"
+                Grid.Row="1"
+                HorizontalOptions="Center"
+                Source="plus.png"
+                WidthRequest="100"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                BackgroundColor="Black"
+                     Clicked="btn_Add_Clicked"/>
+        <Forms9Patch:Label x:Name="lbl_Number"
+                           Grid.Row="2"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               Text="{Binding Number}"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Lines="1"
+                               AutoFit="Width"
+                               FontSize="{Binding TextSize}"
+                               />
+        <ImageButton x:Name="btn_Sub"
+                     Grid.Row="3"
+                HorizontalOptions="Center"
+                Source="minus.png"
+                WidthRequest="100"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                BackgroundColor="Black"
+                     Clicked="btn_Sub_Clicked"/>
+
+        </Grid>
+    </StackLayout>
+</pages:PopupPage>
